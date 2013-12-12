@@ -1,0 +1,364 @@
+<{strip}>
+<{include_php file="`$smarty.const.XOOPS_ROOT_PATH`/themes/admin/xugj_assign_theme_language_inc.php"}>
+<{include_php file="`$smarty.const.XOOPS_ROOT_PATH`/themes/admin/xugj_assign_theme.php"}>
+<!DOCTYPE html>
+<{/strip}>
+<html lang="<{$xoops_langcode}>">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>" />
+<meta http-equiv="content-language" content="<{$xoops_langcode}>" />
+<meta http-equiv="content-script-type" content="text/javascript" />
+<meta http-equiv="content-style-type" content="text/css" />
+<{if $smarty.server.HTTP_USER_AGENT|regex_replace:'/^.*MSIE\s*([0-9]+).*$/i':'\1' > 7}>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<{/if}>
+<title><{$legacy_sitename|xoops_escape}> : <{$smarty.const._CPHOME}> : <{$legacy_pagetitle|xoops_escape}></title>
+<script type="text/javascript" src="<{$xoops_url}>/include/xoops.js"></script>
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/stylesheets/module.css" />
+<script type="text/javascript">
+<!-- <![CDATA[
+   
+var cid = <{if $smarty.get.fct == "preferences" && $smarty.get.mod > 0}><{$smarty.get.mod}><{else}><{$currentModule->mXoopsModule->get('mid')}><{/if}>;
+function ccToggle(id)
+{
+	var el = xoopsGetElementById('c'+id).style;
+	if (el.display == 'block') {
+		el.display = 'none';
+		xoopsGetElementById('t'+id).className = 'head';
+		xoopsGetElementById('i'+id).src = '<{"design/max.png"|theme}>';
+	} else {
+		el.display = 'block';
+		xoopsGetElementById('t'+id).className = 'head2';
+		xoopsGetElementById('i'+id).src = '<{"design/min.png"|theme}>';
+	}
+}
+
+
+function ccOpenAll()
+{
+       var divs = document.getElementsByTagName('div');
+       for (var i=0;i<divs.length;i++) {
+	if (divs[i].className == 'head') {
+	var divid = divs[i].id; 
+	var divcid = divid.replace(/t/i, 'c');
+	var cidel = xoopsGetElementById(divcid); 
+	if ( cidel.className == 'submenu' ) {
+		cidel.style.display = 'block';
+		divs[i].className = 'head2';
+		var imgid = divid.replace(/t/i, 'i');
+		xoopsGetElementById(imgid).src = '<{"design/min.png"|theme}>';	
+	}
+	}
+	}
+}
+
+
+function ccCloseAll()
+{
+       var divs = document.getElementsByTagName('div');
+       for (var i=0;i<divs.length;i++) {
+	if (divs[i].className == 'head2') {
+	var divid = divs[i].id; 
+	var divcid = divid.replace(/t/i, 'c');
+	var cidel = xoopsGetElementById(divcid); 
+	if ( cidel.className == 'submenu' ) {
+		cidel.style.display = 'none';
+		divs[i].className = 'head';
+		var imgid = divid.replace(/t/i, 'i');
+		xoopsGetElementById(imgid).src = '<{"design/max.png"|theme}>';	
+	}
+	}
+	}
+}
+
+function ccOpenCid()
+{
+	ccCloseAll();
+	ccToggle(cid);
+}
+
+   var startwidth = '0px';
+
+       function setEffectCookie(name, value, expiredays)
+    {
+	var todayDate = new Date();
+	todayDate.setDate( todayDate.getDate() + expiredays );
+	document.cookie = name + "=" + escape( value ) + "; expires=" + todayDate.toGMTString() + "; path=/;"
+      }
+
+      function getEffectCookie(name)
+     {
+	var nameOfCookie = name + "=";
+	var x = 0;
+	while ( x <= document.cookie.length )
+	{
+		var y = (x+nameOfCookie.length);
+		if ( document.cookie.substring( x, y ) == nameOfCookie )
+		{
+			if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+			endOfCookie = document.cookie.length;
+			return unescape( document.cookie.substring( y, endOfCookie ) );
+		}
+		x = document.cookie.indexOf( " ", x ) + 1;
+		if ( x == 0 )
+		break;
+	}
+	return "";
+      }
+
+   function toggleEffect(target, resizetarget, toggleimg) {
+    var targetstyle = xoopsGetElementById(target).style;
+    var elestyle = xoopsGetElementById(resizetarget).style;
+    var imgele = xoopsGetElementById(toggleimg);
+
+    if (elestyle.display == "block") {
+        elestyle.display = "none";
+          startwidth = targetstyle.width;
+        targetstyle.width = '20px';
+         imgele.src = '<{"design/menu_restore.png"|theme}>';
+         imgele.alt = 'Click me if you want to restore this left-column';
+         imgele.title = 'Click me if you want to restore this left-column';
+	setEffectCookie( 'effect', 'yes', 1 );
+	xoopsGetElementById('toggleall').style.display = "none";
+      }
+      else {
+        elestyle.display = "block";
+        targetstyle.width = startwidth;
+         imgele.src = '<{"design/menu_minimize.png"|theme}>';
+         imgele.alt = 'Click me if you want to minimize this left-column';
+         imgele.title = 'Click me if you want to minimize this left-column';
+	setEffectCookie( 'effect', 'no', 1 );
+	xoopsGetElementById('toggleall').style.display = "";
+      }
+   }
+
+   function onloadEffect(target, resizetarget, toggleimg) {
+	if ( getEffectCookie("effect") == "yes" ){
+        xoopsGetElementById(resizetarget).style.display = "none";
+          startwidth = xoopsGetElementById(target).style.width;
+        xoopsGetElementById(target).style.width = '20px';
+         xoopsGetElementById(toggleimg).src = '<{"design/menu_restore.png"|theme}>';
+         xoopsGetElementById(toggleimg).alt = 'Click me if you want to restore this left-column';
+         xoopsGetElementById(toggleimg).title = 'Click me if you want to restore this left-column';
+	xoopsGetElementById('toggleall').style.display = "none";
+      }
+     }	
+
+// ]]> -->
+</script>
+<{$xoops_module_header}>
+<script type="text/javascript">
+<!-- <![CDATA[
+if (typeof jQuery != 'undefined') {
+	jQuery(function($){
+		ccToggle(cid);
+		onloadEffect('left-column', 'minimizelc', 'lcimage');
+	});
+} else {
+	document.body.onload = function(){
+		ccToggle(cid);
+		onloadEffect('left-column', 'minimizelc', 'lcimage');
+	}
+}
+// ]]> -->
+</script>
+<{include file="`$smarty.const.XOOPS_ROOT_PATH`/themes/admin/theme_redirect_js.html"}>
+<{include file="`$smarty.const.XOOPS_ROOT_PATH`/themes/admin/theme_ext_js.html"}>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="`$smarty.const.XOOPS_ROOT_PATH`/themes/admin/js/html5.js"></script>
+<script type="text/javascript" src="`$smarty.const.XOOPS_ROOT_PATH`/themes/admin/js/css3-mediaqueries.js"></script>
+<![endif]-->
+</head>
+<body class="<{strip}>
+	<{if $xugj_trustdirname }>
+		<{$xugj_trustdirname}>
+	<{elseif !$xoops_dirname == ""}>
+		<{$xoops_dirname}>
+	<{else}>
+		other
+	<{/if}>
+"><{/strip}>
+
+<div id="container">
+<div id="header">
+<div id="header_h">
+<div class="logo"><a href="<{$xoops_url}>/admin.php">XOOPS Cube Administration</a></div>
+
+<div class="headerSearch">
+<{* <{$xoops_lblocks.action_search.content}> *}>
+<form action="<{$xoops_url}>/modules/legacy/admin/index.php?action=actSearch" method="post" class="headerSearchForm">
+<input type="text" size="40" name="keywords" />
+<input type="submit" value="Search" />
+</form>
+</div>
+
+</div>
+
+<div class="topnav">
+<!-- 2008-12-07 Gigamaster, Test Accessibility -->
+<span class="linkadmin">
+<img src="<{"icons/theme.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ThemeList">テーマ管理</a> 
+<img src="<{"icons/module.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList">モジュールの管理</a> 
+<img src="<{"icons/blocks.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockList"><{$smarty.const._MI_LEGACY_MENU_BLOCKLIST}></a>
+<!--<img src="<{"icons/folder_explore.png"|theme}>" alt="" /> <a href="javascript:openWithSelfMain('<{$xoops_url}>/common/fckeditor/editor/plugins/kfm/index.php', 'filemanager', 750, 600);"><{$smarty.const._IMGMANAGER}></a>-->
+<img src="<{"icons/group.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/user/admin/index.php">ユーザー管理</a> 
+</span> 
+
+<!-- 2013 marine -->
+<a target="_blank" href="<{$xoops_url}>/viewpmsg.php"><{$smarty.const._THEME_LANGUAGE_USER_ACCOUNT}></a>&nbsp;&nbsp;
+<a target="_blank" href="<{$xoops_url}>/viewpmsg.php"><{$smarty.const._THEME_LANGUAGE_NORTIFICATION}></a>&nbsp;&nbsp;
+<{* message module assign *}><{message_newmessage}>
+<img src="<{"icons/comments.png"|theme}>" alt="" /><a target="_blank" href="<{$xoops_url}>/viewpmsg.php"><{$smarty.const._THEME_LANGUAGE_VIEWPMSG}><{if $new_messages}>(<span<{if $new_messages}> class="new1"<{/if}>><{$new_messages}></span>)<{/if}></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+<span class="linksite"><img src="<{"icons/home.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/"><{$smarty.const._YOURHOME}></a>  
+ <img src="<{"icons/logout.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/user.php?op=logout"><{$smarty.const._LOGOUT}></a></span> 
+</div>
+</div>
+
+<div id="admincontent">
+
+<div id="center-column">
+<div id="main">
+
+  <div id="contentBody">
+		<{if $xoops_dirname =="legacy" }>
+		<{elseif $xoops_dirname == "legacyRender"}>
+		<{elseif $xoops_dirname == "user"}>
+		<{elseif $xoops_dirname == "profile"}>
+		<{elseif $xoops_dirname == "xupdate"}>
+		<{else}>
+			<div class="adminnavi"><{strip}>
+				<{$currentModule->mXoopsModule->getVar('name')}>
+				<span class="adminnaviTitle">
+					<{if $xugj_trustdirname }>&#040;&nbsp;モジュール名&nbsp;&#058;&nbsp;<{$xugj_trustdirname}>&nbsp;&#041;
+					<{elseif !$xoops_dirname == ""}>&#040;&nbsp;モジュール名&nbsp;&#058;&nbsp;<{$xoops_dirname}>&nbsp;&#041;
+					<{else}>
+					<{/if}>
+					</span>
+			</div><{/strip}>
+		<{/if}>
+  	<{$xoops_contents}>
+  </div>
+  <div id="contentBottom" class="return_top"><a href="#container"><{$smarty.const._RETURN_TOP}></a></div>
+  
+</div><{* /#main *}>
+</div><{* /#center-column *}>
+
+<div id="left-column">
+
+<{capture assign="recommend_mark"}>
+<div class="system-admin">
+<h3>システム管理</h3>
+<ul>
+<li>基本設定
+<ul>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=1">全般設定</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=6">メール設定</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confmod_id=9">プライベートメッセージ基本設定</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confmod_id=3">メタ・キーワード・フッター設定等</a></li>
+<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=BannerList">バナー管理</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=4">禁止用語設定</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=5">検索オプション</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ActSearch">アクションサーチ</a></li>
+</ul>
+</li>
+<li>運用管理
+<ul>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList">モジュールの管理</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=InstallList">モジュールのインストール</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockList">ブロックの管理</a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=myblocksadmin">ブロックの管理（altsys）</a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=myblocksadmin&dirname=__CustomBlocks__">カスタムブロック管理（altsys）</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockInstallList">ブロックのインストール</a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=myblocksadmin&dirname=__CustomBlocks__&op=edit">カスタムブロックのインストール</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ThemeList">テーマ管理</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=CommentList">コメント管理</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ImagecategoryList">イメージマネージャ</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=SmilesList">顔アイコンの管理</a></li>
+</ul>
+</li>
+<li>ユーザー管理
+<ul>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php">ユーザー基本設定</a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserSearch">ユーザーの検索</a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=RanksList">ユーザーランク管理</a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=GroupList">グループ管理</a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=AvatarList">アバターの管理</a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=MailjobList">メールジョブ一覧</a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserDataUpload">ユーザーの一括登録</a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserDataDownload">ユーザーデータのダウンロード</a></li>
+</ul>
+</li>
+<li>サイト管理
+<ul>
+<li><a href="<{$xoops_url}>/admin.php">サイト情報</a></li>
+<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=TplsetList">テンプレート管理</a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=mytplsadmin">テンプレート管理（altsys）</a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=compilehookadmin">テンプレートの高度な操作（altsys）</a></li>
+<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=TplfileList">テンプレートファイル管理</a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=mylangadmin">言語定数管理（altsys）</a></li>
+<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=HtaccessView">.htaccess設定表示</a></li>
+<li><a href="<{$xoops_url}>/modules/protector/admin/index.php?page=advisory">セキュリティガイド（protector）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<{/capture}>
+
+
+<{if $xoops_dirname =="legacy" }>
+	<{$recommend_mark}>
+<{elseif $xoops_dirname == "legacyRender"}>
+	<{$recommend_mark}>
+<{elseif $xoops_dirname == "user"}>
+	<{$recommend_mark}>
+<{elseif $xoops_dirname == "profile"}>
+	<{$recommend_mark}>
+<{elseif $xoops_dirname == "altsys"}>
+	<div class="system-admin">
+	  <h3><{$currentModule->mXoopsModule->getVar('name')}></h3>
+	  <{if $currentModule->getAdminMenu()}>
+	    <ul>
+	      <{foreach item=menu from=$currentModule->getAdminMenu()}>
+	        <{if $menu.show !== false}>
+	          <li><a href="<{$menu.link|xoops_escape:link}>"><{$menu.title|xoops_escape}></a></li>
+	        <{/if}>
+	      <{/foreach}>
+		  <ul>
+	  <{/if}>
+	</div>
+	<{$recommend_mark}>
+<{else}>
+	<div class="system-admin">
+	  <h3><{$currentModule->mXoopsModule->getVar('name')}></h3>
+	  <{if $currentModule->getAdminMenu()}>
+	    <ul>
+	      <{foreach item=menu from=$currentModule->getAdminMenu()}>
+	        <{if $menu.show !== false}>
+	          <li><a href="<{$menu.link|xoops_escape:link}>"><{$menu.title|xoops_escape}></a></li>
+	        <{/if}>
+	      <{/foreach}>
+		  <ul>
+	  <{/if}>
+	</div>
+<{/if}>
+
+
+  <{$xoops_lblocks.sidemenu.content}>
+  <{foreach name=lblock item=block from=$xoops_lblocks}>
+  <{if $block.name != 'action_search' && $block.name != 'sidemenu'}>
+  <{$block.content}>
+  <{/if}>
+  <{/foreach}>
+</div>
+
+</div><{* /#admincontent *}>
+
+<div id="footer">Powered by&nbsp;<{$smarty.const.XOOPS_VERSION}> &copy; 2001-2012 <a href="https://github.com/xoopscube/legacy" rel="external">The XOOPS Cube Project<br />
+</a>Help Us to Improve <a href="http://xoopscube.org/" rel="external">XOOPS Cube</a> - Report All Bugs to: <a href="https://github.com/xoopscube/legacy/issues"> Project Bug Tracker <img src="<{"icons/bug.png"|theme}>" alt="Bug report" /></a></div>
+
+</div>
+</body>
+</html>
+<{$stdout_buffer}>

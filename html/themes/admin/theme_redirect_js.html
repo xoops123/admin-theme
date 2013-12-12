@@ -1,0 +1,17 @@
+<{** --------- jgrowl -----------**}>
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/js/jgrowl/jquery.jgrowl.css" />
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/js/jgrowl/jquery.jgrowl.redirect.css" />
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/js/jgrowl/jquery.jgrowl.iphone.css" />
+<script type="text/javascript" src="<{$xoops_url}>/themes/admin/js/jgrowl/jquery.jgrowl_minimized.js"></script>
+<{if isset($is_redirected) and $is_redirected }>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+$.jGrowl("<{$redirect_message}>",
+	{
+		position: 'center',
+		theme: 'redirect',
+		life: 3000
+	});
+});
+</script>
+<{/if}>
