@@ -20,6 +20,15 @@ body {
   -webkit-text-size-adjust: 100%;
 	background:#f6f6f6;
 	text-shadow:1px 1px 1px rgba(255, 255, 255, 0.5);
+	-webkit-transition-property: font-size;
+	-moz-transition-property: font-size;
+	transition-property: font-size;
+	-webkit-transition-duration: 0.5s, 0.5s;
+	-moz-transition-duration: 0.5s, 0.5s;
+	transition-duration: 0.5s, 0.5s;
+	-webkit-transition-timing-function: linear, ease-in;
+	-moz-transition-timing-function: linear, ease-in;
+	transition-timing-function: linear, ease-in;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -282,7 +291,7 @@ tr .even td {
 	background: #b7b7b7;
 }
 #header_h {
-	height:45px;
+	height:40px;
 	background: #656565;
 	-moz-box-shadow: 0px 2px 7px rgba(0,0,0,0.5); /* Firefox—p */
 	-webkit-box-shadow: 0px 2px 7px rgba(0,0,0,0.5); /* Safari,Chrome—p */
@@ -323,7 +332,7 @@ tr .even td {
 
 
 #admincontent {
-	padding-left:240px;
+	padding-left:270px;
 	min-height:100%;
 	overflow:hidden;
 	background: #b7b7b7;
@@ -334,9 +343,9 @@ tr .even td {
 /* ====================================================== left-column ===== */
 #left-column {
 	float:left;
-	width:240px;
+	width:270px;
 	padding:10px;
-	margin-left:-250px;
+	margin-left:-280px;
 }
 
 #left-column .head {
@@ -383,7 +392,7 @@ tr .even td {
 	float:right;
 	width:100%;
 	min-height:100%;
-	margin:10px 0 0 -240px;
+	margin:10px 0 0 -270px;
 	padding:0;
 	padding-bottom: 32768px; margin-bottom: -32768px;
 	background:#eeeeee;
@@ -427,7 +436,12 @@ tr .even td {
 
 #menunavi {
 	margin:8px;
-	background-color:#eeeeff;
+	padding:2px;
+	background-color:#e3e3e3;
+	border-top:1px solid #bebebe;
+	border-left:1px solid #bebebe;
+	border-right:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
 }
 #menunavi h2 {
 	margin:0.4em 2em;
@@ -449,6 +463,9 @@ ul.submenunavi li {
 	border-right:1px solid #cccccc;
 	border-bottom:1px solid #cccccc;
 	background:#f8f8ff;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
 }
 
 /* ====================================================== Admin Navi ===== */
@@ -480,16 +497,24 @@ ul.submenunavi li {
 h3.admintitle {
 	display:none;
 }
+h4.admintitle {
+	line-height: 20px;
+}
+.admin_info p{
+	margin: 2px 10px 15px 20px;
+}
 
 /* ====================================================== Top Tab ===== */
 
 ul.toptab {
+	overflow: hidden;
 	width:100%;
 	padding:0;
 	margin:10px 0 20px;
 }
 ul.toptab li {
 	float:left;
+	list-style: none;
 	margin:5px;
 	border-top:1px solid #eee;
 	border-left:1px solid #eee;
@@ -627,22 +652,34 @@ background:#f2f2f2 url(../icons/view.png) 5px center no-repeat;
 	background:#fff8ee url(../icons/important.png) no-repeat 5px 4px;
 }
 .tips {
+	display:box;
+	overflow: hidden;
+	min-height: 60px;
 	color:#696969;
-	padding:8px 8px 8px 90px;
+	padding:0 8px 8px 90px;
 	margin:15px 10px 15px 0;
 	background:url(../icons/cubekun.png) no-repeat 5px -7px;
 }
 .tips div {
 	width: auto;
 	position: relative;
-	padding:8px 8px 8px 20px;
-	border-radius: 20px 20px 20px 20px / 20px 20px 20px 20px;
+ 			 	  border-radius: 20px;
+		 -moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
 	background:#f4f4f4;
-	-moz-box-shadow: 0px 2px 7px rgba(0,0,0,0.5); /* Firefox—p */
+					box-shadow: 0px 2px 7px rgba(0,0,0,0.5); /* CSS3 */
+		 -moz-box-shadow: 0px 2px 7px rgba(0,0,0,0.5); /* Firefox—p */
 	-webkit-box-shadow: 0px 2px 7px rgba(0,0,0,0.5); /* Safari,Chrome—p */
-	box-shadow: 0px 2px 7px rgba(0,0,0,0.5); /* CSS3 */
 }
-.tips div:after {
+.tips > div {
+	float:left;
+	width:234px;
+	height:auto;
+	padding:5px;
+	margin:5px;
+	background: #fff;
+}
+.tips > div:after , .tips > div:before{
 	right: 100%;
 	top: 50%;
 	border: solid transparent;
@@ -650,13 +687,57 @@ background:#f2f2f2 url(../icons/view.png) 5px center no-repeat;
 	height: 0;
 	width: 0;
 	position: absolute;
+	top:25px;
 	pointer-events: none;
-	border-color: rgba(145,145,145,0);
-	border-right-color: #f4f4f4;
-	border-width: 5px;
-	margin-top: -5px;
+}
+.tips > div:after {
+	position: absolute;
+	top:25px;
+	pointer-events: none;
+	border-color: rgba(255,255,255,0);
+	border-right-color: #fff;
+	border-width: 8px;
+	margin-top: -8px;
+}
+.tips > div:before{
+	position: absolute;
+	top:25px;
+	pointer-events: none;
+	border-color: rgba(138, 138, 138, 0);
+	border-right-color: #dcdcdc;
+	border-width: 10px;
+	margin-top: -10px;
 }
 
+.tips > div:nth-child(n+1) {
+	border: 2px solid #a4ffbb;
+}
+.tips > div:nth-child(n+1):before{
+	border-right-color: #a4ffbb;
+}
+.tips > div:nth-child(3n) {
+	border: 2px solid #ffbcf1;
+}
+.tips > div:nth-child(3n):before{
+	border-right-color: #ffbcf1;
+}
+.tips > div:nth-child(3n+1) {
+	border: 2px solid #ffe37e;
+}
+.tips > div:nth-child(3n+1):before{
+	border-right-color: #ffe37e;
+}
+
+.tips > div.admin_info {
+	border: 2px solid #00bbff;
+}
+.tips > div.admin_info:before{
+	border-right-color: #00bbff;
+}
+
+.tips > div ul li ul li{
+	margin-left:5px;
+}
 .error, .errorMsg {
 	color:#000000;
 	border:2px dotted #ff6633;
@@ -672,7 +753,9 @@ background:#f2f2f2 url(../icons/view.png) 5px center no-repeat;
 	border:1px solid #6B94C5;
 	padding:8px 8px 8px 35px;
 	margin:15px 10px;
-	border-radius: 5px 5px 5px 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	background:#ebebf1 url(../icons/tick.png) no-repeat 5px 4px;
 }
 
@@ -725,26 +808,69 @@ background:#f2f2f2 url(../icons/view.png) 5px center no-repeat;
 	color:#ff0000;
 }
 .system-admin {
+	position: relative;
 	display:block;
-	margin:0;
+	margin:0 7px 10px 3px;
+	border: 2px solid #8a8a8a;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	background: #eeeeee;
+  -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 7px rgba(0,0,0,0.3);
+     -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 7px rgba(0,0,0,0.3); /* ボックスシャドウ */
+          box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 7px rgba(0,0,0,0.3);
+}
+.system-admin:after, .system-admin:before {
+	left: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.system-admin:after {
+	position:absolute;
+	top:20px;
+	border-color: rgba(208, 208, 208, 0);
+	border-left-color: #eeeeee;
+	border-width: 10px;
+	margin-top: -10px;
+}
+.system-admin:before {
+	position:absolute;
+	top:20px;
+	border-color: rgba(138, 138, 138, 0);
+	border-left-color: #8a8a8a;
+	border-width: 12px;
+	margin-top: -12px;
 }
 .system-admin h3 {
 	font-size:14px;
 	padding:5px;
 	background:#ddd;
-}
-.system-admin  a{
-	display:block;
+	border: 1px solid #c0c0c0;
+	border-right: 1px solid #e1e1e1;
+	border-bottom: 1px solid #e1e1e1;
+	border-radius: 3px;
 }
 .system-admin  a:hover{
-	background:#f5f5f5;
+	background:#fafafa;
 }
 
 .system-admin ul li {
 	margin:0;
-	padding:2px 2px 2px 17px;
+	padding:1px 2px 1px 17px;
 	list-style:none;
 	background:url(../design/menulist.png) no-repeat 0 1px;
+}
+.system-admin ul li a {
+	display:block;
+	margin:0;
+	padding:1px 2px 1px 1px;
+	list-style:none;
 }
 .system-admin ul li ul li {
 	margin-left:-10px;
@@ -785,3 +911,114 @@ body.protector #contentBody > div a ,
 	padding:1px 5px;
 	margin:5px;
 }
+
+body.protector dt ,
+body.protector p ,
+body.altsys form.odd dt ,
+body.altsys form.odd p {
+	line-height:16px;
+	font-size:14px;
+	font-weight:bold;
+}
+body.protector dt  {
+	line-height:26px;
+}
+body.protector dt a {
+	text-decoration:underline;
+}
+body.protector dt span {
+	font-size:20px;
+	margin-left:5px;
+	padding:0 3px;
+	background:#fff;
+}
+
+
+/*  for xupdate
+----------------------------------------------- */
+#xupdate div.eachstore {
+width: 33%;
+float: left;
+padding: 10px;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-ms-box-sizing: border-box;
+box-sizing: border-box;
+}
+#xupdate div.eachstore dl {
+display: block;
+-webkit-margin-before: 1em;
+-webkit-margin-after: 1em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+}
+#xupdate div.eachstore dt a {
+display: inline-block;
+font-weight: bold;
+border: 1px solid #c2bebe;
+padding: 7px 20px;
+-webkit-transition: all 0.3s ease;
+-moz-transition: all 0.3s ease;
+background: -moz-linear-gradient(top, #FFF 0%, #E6E6E6);
+background: -webkit-gradient(linear, left top, left bottom, from(#FFF),
+ to(#E6E6E6) );
+border-radius: 20px;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+color: #111;
+-moz-box-shadow: inset 1px 1px 1px rgba(000, 000, 000, 0.3);
+-webkit-box-shadow: inset 1px 1px 1px rgba(000, 000, 000, 0.3);
+}
+#xupdate div.eachstore dd {
+	display: block;
+	padding:0;
+	margin:10px 0 10px 0;
+	-webkit-margin-start: 40px;
+}
+#xupdate div.eachstore dd .module_count {
+	font-size: 85%;
+	text-align: right;
+	margin:3px;
+}
+#xupdate div.eachstore ul {
+	margin-left: -20px;
+}
+#xupdate div.eachstore dl dd ul li a.isactive_-1 {
+	color:#2300ff;
+}
+#xupdate div.eachstore dl dd ul li a.isactive_1 {
+	color:#959595;
+}
+#xupdate div.eachstore dt a:hover ,
+#xupdate div.eachstore dl dd ul li a.isactive_1:hover ,
+#xupdate div.eachstore dl dd ul li a.isactive_-1:hover {
+	color:#ff7400;
+}
+#xupdate .category-list {
+	height:24px;
+	line-height:24px;
+	font-size:14px;
+	padding:0 10px;
+	margin-bottom: 7px;
+	border: 1px solid #c9c9c9;
+	background: #dcdcdc;
+}
+#xupdate .category-list a {
+	padding:5px;
+}
+#xupdate .pagenavi  {
+	line-height: 14px;
+	font-size:14px;
+	margin: 5px 0;
+	height: 24px;
+}
+#xupdate .pagenavi a {
+	padding:5px 10px;
+	background: #f7f7f7;
+	border: #c8c8c8;
+	border-radius: 5px;
+}
+#xupdate .pagenavi a:hover {
+	background: #fff;
+}
+

@@ -163,8 +163,6 @@ if (typeof jQuery != 'undefined') {
 }
 // ]]> -->
 </script>
-<{include file="`$smarty.const.XOOPS_ROOT_PATH`/themes/admin/theme_redirect_js.html"}>
-<{include file="`$smarty.const.XOOPS_ROOT_PATH`/themes/admin/theme_ext_js.html"}>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="`$smarty.const.XOOPS_ROOT_PATH`/themes/admin/js/html5.js"></script>
 <script type="text/javascript" src="`$smarty.const.XOOPS_ROOT_PATH`/themes/admin/js/css3-mediaqueries.js"></script>
@@ -179,48 +177,42 @@ if (typeof jQuery != 'undefined') {
 		other
 	<{/if}>
 "><{/strip}>
-
+<{strip}>
 <div id="container">
 <div id="header">
-<div id="header_h">
-<div class="logo"><a href="<{$xoops_url}>/admin.php">XOOPS Cube Administration</a></div>
-
-<div class="headerSearch">
-<{* <{$xoops_lblocks.action_search.content}> *}>
-<form action="<{$xoops_url}>/modules/legacy/admin/index.php?action=actSearch" method="post" class="headerSearchForm">
-<input type="text" size="40" name="keywords" />
-<input type="submit" value="Search" />
-</form>
-</div>
-
-</div>
+	<div id="header_h">
+		<div class="logo"><a href="<{$xoops_url}>/admin.php">XOOPS Cube Administration</a></div>
+		<div class="headerSearch">
+			<{* <{$xoops_lblocks.action_search.content}> *}>
+			<form action="<{$xoops_url}>/modules/legacy/admin/index.php?action=actSearch" method="post" class="headerSearchForm">
+			<input type="text" size="40" name="keywords" />
+			<input type="submit" value="Search" />
+			</form>
+		</div>
+	</div>
 
 <div class="topnav">
 <!-- 2008-12-07 Gigamaster, Test Accessibility -->
 <span class="linkadmin">
-<img src="<{"icons/theme.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ThemeList">テーマ管理</a> 
-<img src="<{"icons/module.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList">モジュールの管理</a> 
+<img src="<{"icons/tool.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/admin.php"><{$smarty.const._AD_THEME_SYSTEM_ADMIN}></a> 
+<img src="<{"icons/theme.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ThemeList"><{$smarty.const._AD_THEME_THEMES_ADMIN}></a> 
+<img src="<{"icons/module.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList"><{$smarty.const._AD_THEME_MODULES_ADMIN}></a> 
 <img src="<{"icons/blocks.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockList"><{$smarty.const._MI_LEGACY_MENU_BLOCKLIST}></a>
-<!--<img src="<{"icons/folder_explore.png"|theme}>" alt="" /> <a href="javascript:openWithSelfMain('<{$xoops_url}>/common/fckeditor/editor/plugins/kfm/index.php', 'filemanager', 750, 600);"><{$smarty.const._IMGMANAGER}></a>-->
-<img src="<{"icons/group.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/user/admin/index.php">ユーザー管理</a> 
-</span> 
+<img src="<{"icons/group.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/user/admin/index.php"><{$smarty.const._MEMBERS}></a> 
 
 <!-- 2013 marine -->
-<a target="_blank" href="<{$xoops_url}>/viewpmsg.php"><{$smarty.const._THEME_LANGUAGE_USER_ACCOUNT}></a>&nbsp;&nbsp;
-<a target="_blank" href="<{$xoops_url}>/viewpmsg.php"><{$smarty.const._THEME_LANGUAGE_NORTIFICATION}></a>&nbsp;&nbsp;
+<img src="<{"icons/user.png"|theme}>" alt="" /> <a href="#"><{$smarty.const._THEME_LANGUAGE_USER_ACCOUNT}></a>&nbsp;&nbsp;
 <{* message module assign *}><{message_newmessage}>
-<img src="<{"icons/comments.png"|theme}>" alt="" /><a target="_blank" href="<{$xoops_url}>/viewpmsg.php"><{$smarty.const._THEME_LANGUAGE_VIEWPMSG}><{if $new_messages}>(<span<{if $new_messages}> class="new1"<{/if}>><{$new_messages}></span>)<{/if}></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="<{"icons/comments.png"|theme}>" alt="" /> <a target="_blank" href="<{$xoops_url}>/viewpmsg.php"><{$smarty.const._THEME_LANGUAGE_VIEWPMSG}><{if $new_messages}><span class="new_massage"><{$new_messages}></span> <img src="<{"icons/comments.png"|theme}>" alt="" /><{/if}></a>
+</span> 
 
 <span class="linksite"><img src="<{"icons/home.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/"><{$smarty.const._YOURHOME}></a>  
  <img src="<{"icons/logout.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/user.php?op=logout"><{$smarty.const._LOGOUT}></a></span> 
 </div>
 </div>
-
 <div id="admincontent">
-
 <div id="center-column">
 <div id="main">
-
   <div id="contentBody">
 		<{if $xoops_dirname =="legacy" }>
 		<{elseif $xoops_dirname == "legacyRender"}>
@@ -228,18 +220,19 @@ if (typeof jQuery != 'undefined') {
 		<{elseif $xoops_dirname == "profile"}>
 		<{elseif $xoops_dirname == "xupdate"}>
 		<{else}>
-			<div class="adminnavi"><{strip}>
+			<div class="adminnavi">
 				<{$currentModule->mXoopsModule->getVar('name')}>
 				<span class="adminnaviTitle">
-					<{if $xugj_trustdirname }>&#040;&nbsp;モジュール名&nbsp;&#058;&nbsp;<{$xugj_trustdirname}>&nbsp;&#041;
-					<{elseif !$xoops_dirname == ""}>&#040;&nbsp;モジュール名&nbsp;&#058;&nbsp;<{$xoops_dirname}>&nbsp;&#041;
+					<{if $xugj_trustdirname }>&nbsp;&#040;&nbsp;<{$smarty.const._AD_LEGACY_LANG_MOD_NAME}>&nbsp;&#058;&nbsp;<{$xugj_trustdirname}>&nbsp;&#041;
+					<{elseif !$xoops_dirname == ""}>&nbsp;&#040;&nbsp;<{$smarty.const._AD_LEGACY_LANG_MOD_NAME}>&nbsp;&#058;&nbsp;<{$xoops_dirname}>&nbsp;&#041;
 					<{else}>
 					<{/if}>
 					</span>
-			</div><{/strip}>
+			</div>
 		<{/if}>
-  	<{$xoops_contents}>
+		<{$xoops_contents}>
   </div>
+
   <div id="contentBottom" class="return_top"><a href="#container"><{$smarty.const._RETURN_TOP}></a></div>
   
 </div><{* /#main *}>
@@ -249,57 +242,58 @@ if (typeof jQuery != 'undefined') {
 
 <{capture assign="recommend_mark"}>
 <div class="system-admin">
-<h3>システム管理</h3>
+<h3><{$smarty.const._AD_THEME_SYSTEM_ADMIN}></h3>
 <ul>
-<li>基本設定
+<li><{$smarty.const._AD_THEME_BASIC_SETTING}>
 <ul>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=1">全般設定</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=6">メール設定</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confmod_id=9">プライベートメッセージ基本設定</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confmod_id=3">メタ・キーワード・フッター設定等</a></li>
-<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=BannerList">バナー管理</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=4">禁止用語設定</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=5">検索オプション</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ActSearch">アクションサーチ</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=1"><{$smarty.const._AD_THEME_GENARAL_SETTING}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=6"><{$smarty.const._AD_THEME_MAIL_SETTING}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confmod_id=9"><{$smarty.const._AD_THEME_PM_SETTING}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confmod_id=3"><{$smarty.const._AD_THEME_META_SETTING}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=BannerList"><{$smarty.const._AD_THEME_BANNER_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=4"><{$smarty.const._AD_THEME_BW_SETTING}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=5"><{$smarty.const._AD_THEME_SEARCH_OPTION}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ActSearch"><{$smarty.const._AD_THEME_ACTION_SEARCH}></a></li>
 </ul>
 </li>
-<li>運用管理
+<li><{$smarty.const._AD_THEME_OP_ADMIN}>
 <ul>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList">モジュールの管理</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=InstallList">モジュールのインストール</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockList">ブロックの管理</a></li>
-<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=myblocksadmin">ブロックの管理（altsys）</a></li>
-<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=myblocksadmin&dirname=__CustomBlocks__">カスタムブロック管理（altsys）</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockInstallList">ブロックのインストール</a></li>
-<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=myblocksadmin&dirname=__CustomBlocks__&op=edit">カスタムブロックのインストール</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ThemeList">テーマ管理</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=CommentList">コメント管理</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ImagecategoryList">イメージマネージャ</a></li>
-<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=SmilesList">顔アイコンの管理</a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList"><{$smarty.const._AD_THEME_MODULES_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=InstallList"><{$smarty.const._AD_THEME_MODULES_INSTALL}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockList"><{$smarty.const._AD_THEME_BLOCKS_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=myblocksadmin"><{$smarty.const._AD_THEME_BLOCKS_ADMIN2}></a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=myblocksadmin&dirname=__CustomBlocks__"><{$smarty.const._AD_THEME_CB_ADMIN2}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockInstallList"><{$smarty.const._AD_THEME_BLOCK_INSTALL}></a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=myblocksadmin&dirname=__CustomBlocks__&op=edit"><{$smarty.const._AD_THEME_CB_INSTALL}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ThemeList"><{$smarty.const._AD_THEME_THEMES_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=CommentList"><{$smarty.const._AD_THEME_COMMENT_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ImagecategoryList"><{$smarty.const._AD_THEME_IMAGE_MANAGER}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=SmilesList"><{$smarty.const._AD_THEME_SMILY_ICON}></a></li>
+<li><a href="<{$xoops_url}>/modules/xupdate/admin/index.php?action=ModuleView">X-update</a></li>
 </ul>
 </li>
-<li>ユーザー管理
+<li><{$smarty.const._AD_THEME_USER_ADMIN}>
 <ul>
-<li><a href="<{$xoops_url}>/modules/user/admin/index.php">ユーザー基本設定</a></li>
-<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserSearch">ユーザーの検索</a></li>
-<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=RanksList">ユーザーランク管理</a></li>
-<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=GroupList">グループ管理</a></li>
-<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=AvatarList">アバターの管理</a></li>
-<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=MailjobList">メールジョブ一覧</a></li>
-<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserDataUpload">ユーザーの一括登録</a></li>
-<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserDataDownload">ユーザーデータのダウンロード</a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php"><{$smarty.const._AD_THEME_USER_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserSearch"><{$smarty.const._AD_THEME_USER_SEARCH}></a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=RanksList"><{$smarty.const._AD_THEME_USER_RANK}></a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=GroupList"><{$smarty.const._AD_THEME_GROUP_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=AvatarList"><{$smarty.const._AD_THEME_AVATAR_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=MailjobList"><{$smarty.const._AD_THEME_MAILJOB_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserDataUpload"><{$smarty.const._AD_THEME_USER_SREG}></a></li>
+<li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserDataDownload"><{$smarty.const._AD_THEME_USER_DATA_DOWNLOAD}></a></li>
 </ul>
 </li>
-<li>サイト管理
+<li><{$smarty.const._AD_THEME_SITE_ADMIN}>
 <ul>
-<li><a href="<{$xoops_url}>/admin.php">サイト情報</a></li>
-<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=TplsetList">テンプレート管理</a></li>
-<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=mytplsadmin">テンプレート管理（altsys）</a></li>
-<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=compilehookadmin">テンプレートの高度な操作（altsys）</a></li>
-<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=TplfileList">テンプレートファイル管理</a></li>
-<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=mylangadmin">言語定数管理（altsys）</a></li>
-<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=HtaccessView">.htaccess設定表示</a></li>
-<li><a href="<{$xoops_url}>/modules/protector/admin/index.php?page=advisory">セキュリティガイド（protector）</a></li>
+<li><a href="<{$xoops_url}>/admin.php"><{$smarty.const._AD_THEME_SITE_INFO}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=TplsetList"><{$smarty.const._AD_THEME_TEMPLATE_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=mytplsadmin"><{$smarty.const._AD_THEME_TEMPLATE_ADMIN2}></a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=compilehookadmin"><{$smarty.const._AD_THEME_TEMPLATE_ADMIN3}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=TplfileList"><{$smarty.const._AD_THEME_TEMPLATE_FILE_ADMIN}></a></li>
+<li><a href="<{$xoops_url}>/modules/altsys/admin/index.php?mode=admin&lib=altsys&page=mylangadmin"><{$smarty.const._AD_THEME_LANGUAGE_ADMIN2}></a></li>
+<li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=HtaccessView"><{$smarty.const._AD_THEME_HTACCESS_EXAMPLE}></a></li>
+<li><a href="<{$xoops_url}>/modules/protector/admin/index.php?page=advisory"><{$smarty.const._AD_THEME_SECURITY_GUIDE}></a></li>
 </ul>
 </li>
 </ul>
@@ -315,33 +309,19 @@ if (typeof jQuery != 'undefined') {
 	<{$recommend_mark}>
 <{elseif $xoops_dirname == "profile"}>
 	<{$recommend_mark}>
-<{elseif $xoops_dirname == "altsys"}>
-	<div class="system-admin">
-	  <h3><{$currentModule->mXoopsModule->getVar('name')}></h3>
-	  <{if $currentModule->getAdminMenu()}>
-	    <ul>
-	      <{foreach item=menu from=$currentModule->getAdminMenu()}>
-	        <{if $menu.show !== false}>
-	          <li><a href="<{$menu.link|xoops_escape:link}>"><{$menu.title|xoops_escape}></a></li>
-	        <{/if}>
-	      <{/foreach}>
-		  <ul>
-	  <{/if}>
-	</div>
-	<{$recommend_mark}>
 <{else}>
-	<div class="system-admin">
-	  <h3><{$currentModule->mXoopsModule->getVar('name')}></h3>
-	  <{if $currentModule->getAdminMenu()}>
-	    <ul>
-	      <{foreach item=menu from=$currentModule->getAdminMenu()}>
-	        <{if $menu.show !== false}>
-	          <li><a href="<{$menu.link|xoops_escape:link}>"><{$menu.title|xoops_escape}></a></li>
-	        <{/if}>
-	      <{/foreach}>
-		  <ul>
-	  <{/if}>
-	</div>
+<div class="system-admin">
+  <h3><{$currentModule->mXoopsModule->getVar('name')}></h3>
+  <{if $currentModule->getAdminMenu()}>
+    <ul>
+      <{foreach item=menu from=$currentModule->getAdminMenu()}>
+        <{if $menu.show !== false}>
+          <li><a href="<{$menu.link|xoops_escape:link}>"><{$menu.title|xoops_escape}></a></li>
+        <{/if}>
+      <{/foreach}>
+    </ul>
+  <{/if}>
+ </div>
 <{/if}>
 
 
@@ -358,7 +338,7 @@ if (typeof jQuery != 'undefined') {
 <div id="footer">Powered by&nbsp;<{$smarty.const.XOOPS_VERSION}> &copy; 2001-2012 <a href="https://github.com/xoopscube/legacy" rel="external">The XOOPS Cube Project<br />
 </a>Help Us to Improve <a href="http://xoopscube.org/" rel="external">XOOPS Cube</a> - Report All Bugs to: <a href="https://github.com/xoopscube/legacy/issues"> Project Bug Tracker <img src="<{"icons/bug.png"|theme}>" alt="Bug report" /></a></div>
 
-</div>
+</div><{/strip}>
 </body>
 </html>
 <{$stdout_buffer}>
