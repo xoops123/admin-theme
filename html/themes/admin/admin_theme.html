@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/stylesheets/style.css" />
 <link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/stylesheets/module.css" />
 <link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/stylesheets/colors.php" />
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/stylesheets/media-queries.css" />
 <script type="text/javascript">
 <!-- <![CDATA[
 var cid = <{if $smarty.get.fct == "preferences" && $smarty.get.mod > 0}><{$smarty.get.mod}><{else}><{$currentModule->mXoopsModule->get('mid')}><{/if}>;
@@ -181,6 +182,27 @@ jQuery('input#headerSearch-keywords').blur(function(){
 });
 });
 </script>
+
+
+<script type="text/javascript">
+jQuery(function(){
+var flag = false;
+$("#top-menu").bind("click",function(){
+	if(flag){
+		$("#admincontent").css("margin-left","-240px");
+		$("#admincontent").css("padding-left","240px");
+		$("#admincontent").css("margin-right","0");
+		$("#center-column").css("margin-left","0");
+	} else{
+		$("#admincontent").css("margin-left","0");
+		$("#admincontent").css("margin-right","-260px");
+		$("#center-column").css("margin-left","-250px");
+		}flag = !flag;
+	});	
+});
+</script>
+
+
 </head>
 <body class="<{strip}>
 	<{if $xugj_trustdirname }>
@@ -217,11 +239,13 @@ jQuery('input#headerSearch-keywords').blur(function(){
 <{* message module assign *}><{message_newmessage}>&nbsp;
 <img src="<{"icons/comments.png"|theme}>" alt="" /> <a target="_blank" href="<{$xoops_url}>/viewpmsg.php"><{$smarty.const._THEME_LANGUAGE_VIEWPMSG}><{if $new_messages}><span class="new_massage"><{$new_messages}></span> <img src="<{"icons/comments.png"|theme}>" alt="" /><{/if}></a>
 </span> 
-
 <span class="linksite"><img src="<{"icons/home.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/"><{$smarty.const._YOURHOME}></a>  
  <img src="<{"icons/logout.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/user.php?op=logout"><{$smarty.const._LOGOUT}></a></span> 
 </div>
+
+<div id="top-menu">menu</div>
 </div>
+
 <div id="admincontent">
 <div id="center-column">
 <div id="main">
