@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<{$xoops_langcode}>" lang="<{$xoops_langcode}>">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>" />
+<meta http-equiv="content-language" content="<{$xoops_langcode}>" />
+<meta http-equiv="content-script-type" content="text/javascript" />
+<meta http-equiv="content-style-type" content="text/css" />
+<title><{$legacy_sitename|xoops_escape}> : <{$smarty.const._CPHOME}> : <{$legacy_pagetitle|xoops_escape}></title>
+<script type="text/javascript" src="<{$xoops_url}>/include/xoops.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/themes/admin/modules/legacy/stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/themes/admin/modules/legacy/stylesheets/module.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/themes/admin/modules/legacy/stylesheets/media-queries.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/themes/admin/modules/legacy/stylesheets/jquery.jgrowl.css" />
+<script type="text/javascript">
+<!--
+if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('Android') > 0) {
+document.write('<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/modules/legacy/stylesheets/iphone.css" media="all">');
+document.write('<meta name="viewport" content="width=480,maximum-scale=0.6667" />');
+}else {
+}
+//-->
+</script>
+<{$xoops_module_header}>
+<script type="text/javascript" src="<{$xoops_url}>/themes/admin/js/jquery.jgrowl.js"></script>
+<{if $is_redirected}><{** --------- jgrowl -----------**}>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$.jGrowl.defaults.position = 'center';
+		$.jGrowl("<{$redirect_message}>");
+	});
+</script>
+<{/if}>
+<script type="text/javascript">
+<!-- <![CDATA[
+jQuery(document).ready(function(){
+    jQuery("#i_menu").click(function(){
+          if (jQuery("#iPhoneMenu").is(":hidden")){
+          jQuery("#iPhoneMenu").slideDown("slow");
+}
+          else{
+          jQuery("#iPhoneMenu").slideUp("fast");
+               }
+        });
+});
+jQuery(document).ready(function(){
+    jQuery("#goback").click(function(){
+          jQuery("#iPhoneMenu").slideUp("fast");
+        });
+});
+// ]]> -->
+</script>
+<script type="text/javascript">
+<!-- <![CDATA[
+jQuery(document).ready(function(){
+	jQuery(".open").click(function(){
+      jQuery("#slideBox").slideToggle("slow");
+	});
+	jQuery('.head').click(function() {
+		jQuery(this).next('.submenu').slideToggle();
+	}).next('.submenu').hide();
+});
+// ]]> -->
+</script>
+<script type="text/javascript">
+<!-- <![CDATA[
+jQuery(document).ready(function(){
+	jQuery(function() {
+		jQuery('#menunavi').each(function(){
+			var txt = jQuery(this).html();
+			jQuery(this).html(
+				txt.replace('全般設定','サイト一般設定')
+			);
+		});
+	});
+	jQuery(function() {
+		jQuery('#menunavi').each(function(){
+			var txt = jQuery(this).html();
+			jQuery(this).html(
+				txt.replace('XOOPS コンフィグ','コントロールパネル')
+			);
+		});
+	});
+	jQuery(function() {
+		jQuery('.submenu').each(function(){
+			var txt = jQuery(this).html();
+			jQuery(this).html(
+				txt.replace('全般設定','サイト一般設定')
+			);
+		});
+	});
+	jQuery(function() {
+		jQuery('.submenu').each(function(){
+			var txt = jQuery(this).html();
+			jQuery(this).html(
+				txt.replace('XOOPS コンフィグ','コントロールパネル')
+			);
+		});
+	});
+	jQuery(function() {
+		jQuery('.outer').each(function(){
+			var txt = jQuery(this).html();
+			jQuery(this).html(
+				txt.replace('- 全般設定','- サイト一般設定')
+			);
+		});
+	});
+	jQuery(function() {
+		jQuery('.adminnaviTitle').each(function(){
+			var txt = jQuery(this).html();
+			jQuery(this).html(
+				txt.replace('全般設定','サイト一般設定')
+			);
+		});
+	});
+	jQuery(function() {
+		jQuery('.panel_open_close').each(function(){
+			var txt = jQuery(this).html();
+			jQuery(this).html(
+				txt.replace('&nbsp;Control&nbsp;Panel','&nbsp;コントロールパネル')
+			);
+		});
+	});
+	jQuery(function() {
+		jQuery('.control_panel').each(function(){
+			var txt = jQuery(this).html();
+			jQuery(this).html(
+				txt.replace('Mobile Setting','モバイル設定')
+			);
+		});
+	});
+	jQuery(function() {
+		jQuery('.control_panel').each(function(){
+			var txt = jQuery(this).html();
+			jQuery(this).html(
+				txt.replace('Meta&nbsp;Keywords','メタ・キーワード')
+			);
+		});
+	});
+	jQuery(function() {
+		jQuery('.open').each(function(){
+			var txt = jQuery(this).html();
+			jQuery(this).html(
+				txt.replace('Details','詳細情報')
+			);
+		});
+	});
+});
+// ]]> -->
+</script>
+</head>
+<body>
+<div id="container">
+
+<div id="header">
+
+<div class="logo"><a href="<{$xoops_url}>/admin.php">XOOPS Cube Administration</a></div>
+
+<div class="headerSearch">
+<{* <{$xoops_lblocks.action_search.content}> *}>
+<form action="<{$xoops_url}>/modules/legacy/admin/index.php?action=actSearch" method="post" class="headerSearchForm">
+<input type="text" size="40" name="keywords" />
+<input type="submit" value="Search" />
+</form>
+</div>
+<!-- Menu for iPhone -->
+<div id="menu_button">
+	<a href="#" id="i_menu">Menu</a>
+</div>
+<!-- End Menu for iPhone -->
+
+
+<div class="topnav">
+<!-- 2008-12-07 Gigamaster, Test Accessibility . 2011-12-13 marine modifi -->
+<div class="linkadmin">
+<a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceList"><img src="<{"icons/tool.png"|theme}>" alt="" /><{$smarty.const._MI_LEGACY_MENU_GENERAL_SETTINGS}></a></div>
+<div class="linkadmin">
+<a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ThemeList"><img src="<{"icons/theme.png"|theme}>" alt="" /><{$smarty.const._MI_LEGACY_BLOCK_THEMES_NAME}></a></div>
+<div class="linkadmin">
+<a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList"><img src="<{"icons/module.png"|theme}>" alt="" /><{$smarty.const._AD_LEGACY_LANG_BLOCK_MOD}></a></div>
+<div class="linkadmin">
+<a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockList"><img src="<{"icons/blocks.png"|theme}>" alt="" /><{$smarty.const._MI_LEGACY_MENU_BLOCKLIST}></a></div>
+<!--<img src="<{"icons/folder_explore.png"|theme}>" alt="" /> <a href="javascript:openWithSelfMain('<{$xoops_url}>/common/fckeditor/editor/plugins/kfm/index.php', 'filemanager', 750, 600);"><{$smarty.const._IMGMANAGER}></a>-->
+<div class="linkadmin">
+<a href="<{$xoops_url}>/modules/user/admin/index.php"><img src="<{"icons/group.png"|theme}>" alt="" /><{$smarty.const._MEMBERS}></a></div>
+<!-- 2011.12.14 marine , commentout . 
+<div class="linkadmin">
+<a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=CommentList"><img src="<{"icons/comments.png"|theme}>" alt="" /><{$smarty.const._COMMENTS}></a></div>
+-->
+<div class="linklogout">
+<a href="<{$xoops_url}>/user.php?op=logout"><img src="<{"icons/logout.png"|theme}>" alt="" /><{$smarty.const._LOGOUT}></a>
+</div>
+<div class="linkhome">
+<a href="<{$xoops_url}>/"><img src="<{"icons/home.png"|theme}>" alt="" /><{$smarty.const._YOURHOME}></a>
+</div>
+</div>
+
+<div id="admincontent">
+
+<div id="center_column">
+  <div id="menunavi">
+  <h2><{$currentModule->mXoopsModule->getShow('name')}></h2>
+  <{if $currentModule->getAdminMenu()}>
+    <ul class="submenunavi">
+      <{foreach item=menu from=$currentModule->getAdminMenu()}>
+        <{if $menu.show !== false}>
+          <li class="shadow"><a href="<{$menu.link|xoops_escape:link}>"><{$menu.title|xoops_escape}></a></li>
+        <{/if}>
+      <{/foreach}>
+
+          <{if $currentModule->mXoopsModule->getInfo('blocks') && $currentModule->mXoopsModule->getShow('dirname') != "legacy" && $currentModule->mXoopsModule->getShow('dirname') != "altsys" && $currentModule->mXoopsModule->getShow('dirname') != "system"}>
+          <li class="shadow"><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockList&amp;dirname=<{$currentModule->mXoopsModule->getShow('dirname')}>"><{$smarty.const._MI_LEGACY_MENU_BLOCKLIST}></a></li>
+          <li class="shadow"><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockInstallList&amp;dirname=<{$currentModule->mXoopsModule->getShow('dirname')}>"><{$smarty.const._MI_LEGACY_MENU_BLOCKINSTALL}></a></li>
+          <{/if}>
+          <{if $currentModule->mXoopsModule->getInfo('templates') && $currentModule->mXoopsModule->getShow('dirname') != "legacyRender" && $currentModule->mXoopsModule->getShow('dirname') != "altsys" && $currentModule->mXoopsModule->getShow('dirname') != "system"}>
+          <li class="shadow"><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=TplfileList&amp;tpl_module=<{$currentModule->mXoopsModule->getShow('dirname')}>&amp;sort=-9"><img src="<{"icons/templates.png"|theme}>" align="middle" />&nbsp;<{$smarty.const._AD_LEGACY_LANG_TEMPLATE_INFO}></a></li>
+          <{/if}>
+          <{if $currentModule->mXoopsModule->getInfo('hasComments')}>
+          <li class="shadow"><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=CommentList&amp;com_modid=<{$currentModule->mXoopsModule->getShow('mid')}>&amp;sort=-8"><img src="<{"icons/comments.png"|theme}>" align="middle" />&nbsp;<{$smarty.const._MI_LEGACY_MENU_COMMENT_MANAGE}></a></li>
+          <{/if}>
+        <{if $currentModule->mXoopsModule->hasNeedUpdate()}>
+          <li class="shadow"><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleUpdate&amp;dirname=<{$currentModule->mXoopsModule->getShow('dirname')}>"><{$smarty.const._AD_LEGACY_LANG_UPGRADE}>&nbsp;<img src="<{"icons/update.png"|theme}>" alt="<{$smarty.const._AD_LEGACY_LANG_UPGRADE}>" title="<{$smarty.const._AD_LEGACY_LANG_UPGRADE}>" /></a></li>
+        <{else}>
+          <li class="shadow"><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleUpdate&amp;dirname=<{$currentModule->mXoopsModule->getShow('dirname')}>"><img src="<{"icons/update.png"|theme}>" align="middle" />&nbsp;<{$smarty.const._AD_LEGACY_LANG_UPGRADE}></a></li>
+        <{/if}>
+          <li class="shadow"><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleEdit&amp;mid=<{$currentModule->mXoopsModule->getShow('mid')}>"><img src="<{"icons/edit.png"|theme}>" align="middle" />&nbsp;<{$smarty.const._EDIT}></a></li>
+          <li class="shadow"><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleInfo&amp;dirname=<{$currentModule->mXoopsModule->getShow('dirname')}>"><img src="<{"icons/info.png"|theme}>" align="middle" />&nbsp;<{$smarty.const._AD_LEGACY_LANG_INFORMATION}></a></li>
+    </ul>
+  <{/if}>
+  </div>
+
+<!-- Test Accessibility , 2011-12-13 marine -->
+<{if $smarty.server.SCRIPT_FILENAME|basename == "admin.php" and $smarty.server.SCRIPT_FILENAME|dirname|basename == $smarty.const.XOOPS_ROOT_PATH|basename}>
+<div class="panel_open_close"><img src="<{"icons/tool.png"|theme}>" align="middle" />&nbsp;Control&nbsp;Panel</div>
+<div class="control_panel">
+	<div class="icon_box">
+		<dl>
+		<dt><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=1"><img src="<{"icons/Control_Panel.png"|theme}>" height=125 width=125 alt="" title="" /></a></dt>
+		<dd><{$smarty.const._MD_AM_SITEPREF}></dd>
+		</dl>
+	</div>
+	<div class="icon_box">
+		<dl>
+		<dt><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confmod_id=3"><img src="<{"icons/Meta_Edit.png"|theme}>" height=125 width=125 alt="" title="" /></a></dt>
+		<dd>Meta&nbsp;Keywords(<{$smarty.const._PREFERENCES}>)</dd>
+		</dl>
+	</div>
+	<div class="icon_box">
+		<dl>
+		<dt><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=4"><img src="<{"icons/buddy_spy.png"|theme}>" height=125 width=125 alt="" title="" /></a></dt>
+		<dd><{$smarty.const._MD_AM_CENSOR}></dd>
+		</dl>
+	</div>
+	<div class="icon_box">
+		<dl>
+		<dt><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=5"><img src="<{"icons/search02.png"|theme}>" height=125 width=125 alt="" title="" /></a></dt>
+		<dd><{$smarty.const._SEARCH}><{$smarty.const._OPTIONS}></dd>
+		</dl>
+	</div>
+	<div class="icon_box">
+		<dl>
+		<dt><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=6"><img src="<{"icons/Letter2.png"|theme}>" height=125 width=125 alt="" title="" /></a></dt>
+		<dd><{$smarty.const._MD_AM_MAILER}></dd>
+		</dl>
+	</div>
+	<div class="icon_box">
+		<dl>
+		<dt><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confmod_id=4"><img src="<{"icons/user_info.png"|theme}>" height=125 width=125 alt="" title="" /></a></dt>
+		<dd><{$smarty.const._AD_LEGACY_LANG_COM_UID}></dd>
+		</dl>
+	</div>
+	<div class="icon_box">
+		<dl>
+		<dt><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ThemeList"><img src="<{"icons/themes.png"|theme}>" height=125 width=125 alt="" title="" /></a></dt>
+		<dd><{$smarty.const._MI_LEGACY_BLOCK_THEMES_NAME}></dd>
+		</dl>
+	</div>
+	<div class="icon_box">
+		<dl>
+		<dt><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList"><img src="<{"icons/modules.png"|theme}>" height=125 width=125 alt="" title="" /></a></dt>
+		<dd><{$smarty.const._AD_LEGACY_LANG_MODLIST}></dd>
+		</dl>
+	</div>
+	<div class="icon_box">
+		<dl>
+		<dt><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockList"><img src="<{"icons/block_b.png"|theme}>" height=125 width=125 alt="" title="" /></a></dt>
+		<dd><{$smarty.const._MI_LEGACY_MENU_BLOCKLIST}></dd>
+		</dl>
+	</div>
+	<div class="icon_box clearfix">
+		<dl>
+		<dt><a href="<{$xoops_url}>/modules/hypconf/admin/index.php?mode=admin&page=k_tai_conf"><img src="<{"icons/mobile.png"|theme}>" height=125 width=125 alt="" title="" /></a></dt>
+		<dd>Mobile Setting</dd>
+		</dl>
+	</div>
+</div>
+<{/if}>
+<!-- End Test Accessibility , 2011-12-12 marine -->
+
+  <div id="x_contents"><{$xoops_contents}></div>
+  <div class="return_top"><a href="#container"><{$smarty.const._RETURN_TOP}></a></div>
+</div>
+
+<div id="left_column">
+  <{$xoops_lblocks.sidemenu.content}>
+  <{foreach name=lblock item=block from=$xoops_lblocks}>
+	  <{if $block.name != 'action_search' && $block.name != 'sidemenu'}>
+		  <{$block.content}>
+	  <{/if}>
+  <{/foreach}>
+</div>
+
+</div><!-- End admincontent -->
+
+<div id="footer">Powered by&nbsp;<{$smarty.const.XOOPS_VERSION}> &copy; 2001-2011 <a href="http://sourceforge.net/projects/xoopscube/" rel="external">The XOOPS Cube Project<br />
+</a>Help Us to Improve <a href="http://xoopscube.org/" rel="external">XOOPS Cube</a> - Report All Bugs to: <a href="http://sourceforge.net/tracker/?group_id=159211"> Project Bug Tracker <img src="<{"icons/bug.png"|theme}>" alt="Bug report" /></a></div>
+
+</div>
+
+<div id="iPhoneMenu">
+  <{$xoops_lblocks.sidemenu.content}>
+  <{foreach name=lblock item=block from=$xoops_lblocks}>
+	  <{if $block.name != 'action_search' && $block.name != 'sidemenu'}>
+		  <{$block.content}>
+	  <{/if}>
+  <{/foreach}>
+  <p id="goback"><a href="#">Back</a></p>
+</div>
+
+</body>
+</html>
+<{$stdout_buffer}>

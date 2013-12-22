@@ -19,7 +19,6 @@
 <link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/stylesheets/colors.php" />
 <script type="text/javascript">
 <!-- <![CDATA[
-   
 var cid = <{if $smarty.get.fct == "preferences" && $smarty.get.mod > 0}><{$smarty.get.mod}><{else}><{$currentModule->mXoopsModule->get('mid')}><{/if}>;
 function ccToggle(id)
 {
@@ -34,8 +33,6 @@ function ccToggle(id)
 		xoopsGetElementById('i'+id).src = '<{"design/min.png"|theme}>';
 	}
 }
-
-
 function ccOpenAll()
 {
        var divs = document.getElementsByTagName('div');
@@ -53,8 +50,6 @@ function ccOpenAll()
 	}
 	}
 }
-
-
 function ccCloseAll()
 {
        var divs = document.getElementsByTagName('div');
@@ -72,13 +67,11 @@ function ccCloseAll()
 	}
 	}
 }
-
 function ccOpenCid()
 {
 	ccCloseAll();
 	ccToggle(cid);
 }
-
    var startwidth = '0px';
 
        function setEffectCookie(name, value, expiredays)
@@ -164,6 +157,30 @@ if (typeof jQuery != 'undefined') {
 }
 // ]]> -->
 </script>
+<script type="text/javascript">
+jQuery(function() {
+var headerSearch = jQuery('.headerSearch');
+var GuideSentence = '<{$smarty.const._AD_THEME_ACTION_SEARCH}>';
+var long = '240px';
+var short = '120px';
+jQuery('input#headerSearch-keywords').focus(function(){
+    if(jQuery(this).val()===GuideSentence){
+        jQuery(this).val('');
+    }
+    jQuery(this).animate({width: long},200);
+	jQuery(this).css("background","#fff");
+	jQuery(this).css("color","#000");
+});
+jQuery('input#headerSearch-keywords').blur(function(){
+    if(jQuery(this).val()===''){
+        jQuery(this).val(GuideSentence);
+    }
+    jQuery(this).animate({width: short},500);
+	jQuery(this).css("background","#f5f5f5");
+	jQuery(this).css("color","#b7b7b7");
+});
+});
+</script>
 </head>
 <body class="<{strip}>
 	<{if $xugj_trustdirname }>
@@ -179,27 +196,25 @@ if (typeof jQuery != 'undefined') {
 <div id="header">
 	<div id="header_h">
 		<div class="logo"><a href="<{$xoops_url}>/admin.php">XOOPS Cube Administration</a></div>
-		<div class="headerSearch">
+		<div id="headerSearch">
 			<{* <{$xoops_lblocks.action_search.content}> *}>
 			<form action="<{$xoops_url}>/modules/legacy/admin/index.php?action=actSearch" method="post" class="headerSearchForm">
-			<input type="text" size="40" name="keywords" />
-			<input type="submit" value="Search" />
-			</form>
+			<input id="headerSearch-keywords" value="<{$smarty.const._AD_THEME_ACTION_SEARCH}>" type="text" size="40" name="keywords" />
+		  <input type="image" src="<{$xoops_url}>/themes/admin/icons/search-icon.png" name="searchSubmit" alt="<{$smarty.const._AD_THEME_ACTION_SEARCH}>"  title="<{$smarty.const._AD_THEME_ACTION_SEARCH}>" id="headerSearch-searchBtn" class="button" />
+		  </form>
 		</div>
 	</div>
 
 <div class="topnav">
-<!-- 2008-12-07 Gigamaster, Test Accessibility -->
 <span class="linkadmin">
-<img src="<{"icons/tool.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/admin.php"><{$smarty.const._AD_THEME_SYSTEM_ADMIN}></a> 
-<img src="<{"icons/theme.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ThemeList"><{$smarty.const._AD_THEME_THEMES_ADMIN}></a> 
-<img src="<{"icons/module.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList"><{$smarty.const._AD_THEME_MODULES_ADMIN}></a> 
-<img src="<{"icons/blocks.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockList"><{$smarty.const._MI_LEGACY_MENU_BLOCKLIST}></a>
-<img src="<{"icons/group.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/user/admin/index.php"><{$smarty.const._MEMBERS}></a> 
-
-<!-- 2013 marine -->
-<img src="<{"icons/user.png"|theme}>" alt="" /> <a href="#"><{$smarty.const._THEME_LANGUAGE_USER_ACCOUNT}></a>&nbsp;&nbsp;
-<{* message module assign *}><{message_newmessage}>
+<img src="<{"icons/tool.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/admin.php"><{$smarty.const._AD_THEME_SYSTEM_ADMIN}></a>&nbsp;
+<img src="<{"icons/theme.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ThemeList"><{$smarty.const._AD_THEME_THEMES_ADMIN}></a>&nbsp;
+<img src="<{"icons/module.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList"><{$smarty.const._AD_THEME_MODULES_ADMIN}></a>&nbsp;
+<img src="<{"icons/blocks.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=BlockList"><{$smarty.const._MI_LEGACY_MENU_BLOCKLIST}></a>&nbsp;
+<img src="<{"icons/group.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/user/admin/index.php"><{$smarty.const._MEMBERS}></a>&nbsp;
+<img src="<{"icons/help.png"|theme}>" alt="" /> <a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=Help&dirname=legacy"><{$smarty.const._HELP}></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="<{"icons/user.png"|theme}>" alt="" /> <a href="#"><{$smarty.const._THEME_LANGUAGE_USER_ACCOUNT}></a>
+<{* message module assign *}><{message_newmessage}>&nbsp;
 <img src="<{"icons/comments.png"|theme}>" alt="" /> <a target="_blank" href="<{$xoops_url}>/viewpmsg.php"><{$smarty.const._THEME_LANGUAGE_VIEWPMSG}><{if $new_messages}><span class="new_massage"><{$new_messages}></span> <img src="<{"icons/comments.png"|theme}>" alt="" /><{/if}></a>
 </span> 
 

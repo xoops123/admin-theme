@@ -248,6 +248,47 @@ tr .even td {
 #header .headerSearchForm {
 	margin:0;
 }
+
+#headerSearch {
+	position: absolute;
+	top: 0px;
+	right: 5px;
+	height:20px;
+	width:242px;
+	z-index:1001;
+	display:block;
+}
+#headerSearch-searchform {
+	width: 240px;
+	background: transparent;
+	display: block;
+	height: 16px;
+}
+#headerSearch-keywords	{
+	position: absolute;
+	top: 11px;
+	right: 12px;
+	width: 120px;
+	height: 16px;
+	padding-left:6px;
+	border:1px solid #AFAFAF;
+	background: #f5f5f5;
+	color:#b7b7b7;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.25);
+	-webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.25);
+}
+#headerSearch-searchBtn	{
+	position: absolute;
+	top:11px;
+	right: 13px;
+	background: transparent;
+	border:none;
+}
+
 #header .topnav {
 	clear:both;
 	text-align:right;
@@ -671,3 +712,12 @@ padding: 7px 20px;
 	padding:5px 10px;
 }
 
+.clearfix {
+    content: " ";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0.1px;
+    font-size: 0.1em;
+    line-height: 0;
+}

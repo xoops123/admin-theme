@@ -1,28 +1,15 @@
 <?php
 header('Content-Type: text/css'); 
 
-//config
-define('_ATC_BG','#b7b7b7'); 									//基本背景色
-define('_ATC_COLOR','#37415C'); 							//基本文字色
-define('_ATC_ACOLOR','#3F4D6B'); 							//リンク文字色
-define('_ATC_AHCOLOR','#F29B09'); 						//リンク hover 文字色
-define('_ATC_HEADER','#656565'); 							//ヘッダーバー背景
-define('_ATC_RCOLOR','#fff');	 								//ヘッダーバー等文字色（反転）
-
-define('_ATC_LEFT_HEAD','#c8c8c8'); 					//左カラム モジュール名 head
-define('_ATC_COLUMN','#fafafa'); 							//左カラム システム管理、中央カラム背景
-define('_ATC_H3_BG','#ddd');	 								//h3 背景
-define('_ATC_CONTENTS','#f5f5f5');	 					//コンテンツ内ボックス背景
-
-define('_ATC_ODD','#f4f9ff');	 								//odd
-define('_ATC_EVEN','#fff');	 									//even
-define('_ATC_ACTIVE','#E6FFE6');	 						//tr.active 等の背景
-
-define('_ATC_ALT_MENU','#e1e1e1');	 					//altsys メニューの背景
-
+//read config
+if( file_exists( dirname( __FILE__ ) . '/config.php' ) ) {
+	include_once( dirname( __FILE__ ) . '/config.php' ) ;
+}else{
+	include_once( dirname( __FILE__ ) . '/config.dist.php' ) ;
+}
 
 ?>
-/*========================================================*/
+/*============================================================================*/
 
 /******************************************************************************/
 /* colors.css */
@@ -31,6 +18,7 @@ define('_ATC_ALT_MENU','#e1e1e1');	 					//altsys メニューの背景
 body {
 	color: <?php echo _ATC_COLOR ?>;
 	background:<?php echo _ATC_BG ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,72%,1);
 	text-shadow:1px 1px 1px rgba(255, 255, 255, 0.5);
 }
 a, a:visited {
@@ -127,9 +115,11 @@ input[type="checkbox"]:focus {
 
 #header {
 	background: <?php echo _ATC_BG ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,72%,1);
 }
 #header_h {
 	background: <?php echo _ATC_HEADER ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,40%,1);
 	-moz-box-shadow: 0px 2px 7px rgba(0,0,0,0.5); /* Firefox—p */
 	-webkit-box-shadow: 0px 2px 7px rgba(0,0,0,0.5); /* Safari,Chrome—p */
 	box-shadow: 0px 2px 7px rgba(0,0,0,0.5); /* CSS3 */
@@ -141,17 +131,24 @@ input[type="checkbox"]:focus {
 
 #admincontent {
 	background: <?php echo _ATC_BG ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,72%,1);
 }
 
 #left-column .head {
 	border-top :1px solid #d6d6d6;
+	border-top :1px solid hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,84%,1);
 	border-bottom :1px solid #d6d6d6;
+	border-bottom :1px solid hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,84%,1);
 	background:<?php echo _ATC_LEFT_HEAD ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,76%,1);
 }
 #left-column .head2 {
 	border-top :1px solid #d6d6d6;
 	border-bottom :1px solid #d6d6d6;
+	border-top :1px solid hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,84%,1);
+	border-bottom :1px solid hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,84%,1);
 	background:#eeeeee;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,93%,1);
   -moz-box-shadow: 0 1px 0 #777,0 -1px 0 #777; /* ボックスシャドウ */
   -webkit-box-shadow: 0 1px 0 #777,0 -1px 0 #777;
   box-shadow: 0 1px 0 #777,0 -1px 0 #777;
@@ -163,6 +160,7 @@ input[type="checkbox"]:focus {
 /* =============================== Center Column ===== */
 #center-column {
 	background:<?php echo _ATC_COLUMN ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,93%,1);
 	border-radius: 3px 3px 3px 3px;
   -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 7px rgba(0,0,0,0.3);
      -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 7px rgba(0,0,0,0.3); /* ボックスシャドウ */
@@ -171,6 +169,7 @@ input[type="checkbox"]:focus {
 
 #footer {
 	background:<?php echo _ATC_HEADER ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,40%,1);
 	color:<?php echo _ATC_RCOLOR ?>;
 }
 #footer a {
@@ -215,6 +214,7 @@ ul.submenunavi li {
 	border:1px solid #EEE;
 	border-bottom:1px solid #fff;
 	background:<?php echo _ATC_H3_BG ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,87%,1);
 	color:#696969;
 }
 .adminnavi a:link , 
@@ -467,6 +467,7 @@ ul.modulenav a:hover span {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	background: <?php echo _ATC_COLUMN ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,93%,1);
   -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 7px rgba(0,0,0,0.3);
      -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 7px rgba(0,0,0,0.3); /* ボックスシャドウ */
           box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 7px rgba(0,0,0,0.3);
@@ -487,6 +488,7 @@ ul.modulenav a:hover span {
 	top:20px;
 	border-color: rgba(208, 208, 208, 0);
 	border-left-color: <?php echo _ATC_COLUMN ?>;
+	border-left-color:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,93%,1);
 	border-width: 10px;
 	margin-top: -10px;
 }
@@ -500,6 +502,7 @@ ul.modulenav a:hover span {
 }
 .system-admin h3 {
 	background:<?php echo _ATC_H3_BG ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,87%,1);
 	border: 1px solid #c0c0c0;
 	border-right: 1px solid #e1e1e1;
 	border-bottom: 1px solid #e1e1e1;
@@ -524,6 +527,7 @@ ul.modulenav a:hover span {
 }
 body.altsys form.odd {
 	background:<?php echo _ATC_H3_BG ?>;
+	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,87%,1);
 }
 body.protector #contentBody > div ,
 div.altsys_mymenu {
@@ -533,7 +537,9 @@ div.altsys_mymenu {
 }
 hr.altsys_mymenu_separator {
 	background-color: <?php echo _ATC_COLUMN ?>;
+	background-color:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,93%,1);
 	color: <?php echo _ATC_COLUMN ?>;
+	color:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,93%,1);
 }
 
 body.protector dt span {
