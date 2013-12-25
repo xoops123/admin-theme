@@ -1,3 +1,31 @@
+@media (min-width: 1025px) and (max-width: 3000px) {
+	body { font-size: 12px; }
+	#left-column {
+		width:270px;
+		padding:10px;
+		margin-left:-280px;
+	}
+	#center-column {
+		width:100%;
+		min-height:100%;
+		margin:10px 0 0 -270px;
+		padding:0;
+		padding-bottom: 32768px; margin-bottom: -32768px;
+	}
+	#top-menu {
+		display: none;
+	}
+	#admincontent {
+		padding-left:270px;
+		margin-left:0px;
+		min-height:100%;
+		overflow:hidden;
+	}
+	#header_h {
+		height:40px;
+	}
+}
+
 @media screen and (max-width: 1024px) 	{
 	body { font-size: 11px; }
 	#left-column {
@@ -10,8 +38,12 @@
 		padding:0;
 		padding-bottom: 32768px; margin-bottom: -32768px;
 	}
+	#top-menu {
+		display: none;
+	}
 	#admincontent {
 		padding-left:240px;
+		margin-left:0px;
 	}
 	#header_h {
 		height:37px;

@@ -302,6 +302,11 @@ tr .even td {
 #header .topnav span.linkadmin { float:left;}
 #header .topnav span.linkadmin a, span.linksite a { margin-right:10px;}
 
+#top-menu {
+	display: none;
+	height:50px;
+	cursor: pointer;
+}
 
 #admincontent {
 	padding-left:270px;

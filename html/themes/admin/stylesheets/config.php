@@ -3,7 +3,7 @@ header('Content-Type: text/css');
 
 //色相選択（color phase）
 define('_COLOR_PHASE','200'); //hslaによる色相（0-360）
-define('_COLOR_PHASE2','50'); //hslaによる彩度（0-360）
+define('_COLOR_PHASE2','0'); //hslaによる彩度（0-360）
 
 //基本設定
 define('_ATC_BG','#b7b7b7'); 									//基本背景色

@@ -59,14 +59,14 @@ class Legacy_AdminSystemCheckPlusPreload extends XCube_ActionFilter
 		$welcome = '<b>Welcome to XOOPS Cube Legacy!!</b><br />Have a nice and happy time!!';
 		$attributes = array();
 		$attributes['dummy_content'] = $welcome;
-		$template = XOOPS_ROOT_PATH."/themes/admin/templates/legacy_dummy.html";
+		$template = XOOPS_ROOT_PATH."/themes/admin/modules/legacy/legacy_dummy.html";
 		Legacy_AdminSystemCheckPlusPreload::display_message($attributes, $template, $return = false);
 		}//type1 if
 		
 		elseif ( $type == 2 ) {
 		
 		//you must prepare your own legacy_admin_welcome.html
-		if ( file_exists(XOOPS_ROOT_PATH."/themes/admin/templates/legacy_admin_welcome.html") ) {
+		if ( file_exists(XOOPS_ROOT_PATH."/themes/admin/modules/legacy/legacy_admin_welcome.html") ) {
 		//it's just a example! please customize it!
 		$welcome_title = 'Welcome Message!';
 		$welcome_msg = array();
@@ -75,7 +75,7 @@ class Legacy_AdminSystemCheckPlusPreload extends XCube_ActionFilter
 		$attributes = array();
 		$attributes['title'] = $welcome_title;
 		$attributes['messages'] = $welcome_msg;
-		$template = XOOPS_ROOT_PATH."/themes/admin/templates/legacy_admin_welcome.html";
+		$template = XOOPS_ROOT_PATH."/themes/admin/modules/legacy/legacy_admin_welcome.html";
 		Legacy_AdminSystemCheckPlusPreload::display_message($attributes, $template, $return = false);
 		}//file_exists if
 		}//type2 if
@@ -176,7 +176,7 @@ class Legacy_AdminSystemCheckPlusPreload extends XCube_ActionFilter
     		XCube_DelegateUtils::call('Legacyblock.Waiting.Show', new XCube_Ref($modules));
 		$attributes = array();
 		$attributes['block']['modules'] = $modules;
-		$template = XOOPS_ROOT_PATH."/themes/admin/templates/legacy_block_waiting.html";
+		$template = XOOPS_ROOT_PATH."/themes/admin/modules/legacy/legacy_block_waiting.html";
 		$result = Legacy_AdminSystemCheckPlusPreload::display_message($attributes, $template, $return = true);
 		xoops_result($result, _MI_LEGACY_BLOCK_WAITING_NAME);
 		}//waiting if
@@ -202,7 +202,7 @@ class Legacy_AdminSystemCheckPlusPreload extends XCube_ActionFilter
 		$output = str_replace('</div>', '', $output);	
 		$attributes = array();
 		$attributes['dummy_content'] = $output;
-		$template = XOOPS_ROOT_PATH."/themes/admin/templates/legacy_dummy.html";
+		$template = XOOPS_ROOT_PATH."/themes/admin/modules/legacy/legacy_dummy.html";
 		Legacy_AdminSystemCheckPlusPreload::display_message($attributes, $template, $return = false);
 		}//phpinfo if
 		/////////////////////////////////
