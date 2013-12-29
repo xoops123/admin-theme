@@ -25,6 +25,11 @@
 	#header_h {
 		height:40px;
 	}
+	.system-admin ul li ul.ch-menu {
+		position: absolute;
+		top:-9px;
+		left:250px;
+	}
 }
 
 @media screen and (max-width: 1024px) 	{
@@ -49,6 +54,11 @@
 	}
 	#header_h {
 		height:37px;
+	}
+	.system-admin ul li ul.ch-menu {
+		position: absolute;
+		top:-9px;
+		left:220px;
 	}
 }
 
@@ -105,6 +115,11 @@
 	#headerSearch,
 	.topnav {
 		display: none;
+	}
+	.system-admin ul li ul.ch-menu {
+		position: absolute;
+		top:-9px;
+		left:220px;
 	}
 }
 
