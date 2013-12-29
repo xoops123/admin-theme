@@ -560,7 +560,7 @@ ul.modulenav a:hover span {
 	overflow:auto;
 }
 
-/* ====================================================== Ranking ===== */
+/* ====================================================== Admin menu ===== */
 
 .system-admin {
 	position: relative;
@@ -570,22 +570,19 @@ ul.modulenav a:hover span {
 }
 .system-admin div {
 	margin-bottom:7px;
+	border-bottom: 1px solid #d5d5d5;
 }
 .system-admin h3 {
 	font-size:14px;
 	padding:5px;
 }
-.system-admin h4 {
-	font-size:12px;
-	line-height:14px;
-	margin:7px 9px 5px 7px;
-	padding:3px 5px 5px 10px;
+.system-admin ul  {
+	position: relative;
 }
-.system-admin ul {
-	margin-left:12px;
-}
-
 .system-admin ul li {
+	font-size:13px;
+	font-weight: bold;
+	line-height:16px;
 	margin:0;
 	padding:1px 2px 1px 17px;
 	list-style:none;
@@ -596,8 +593,19 @@ ul.modulenav a:hover span {
 	padding:1px 2px 1px 1px;
 	list-style:none;
 }
+
 .system-admin ul li ul li {
 	margin-left:-10px;
+	font-size:13px;
+}
+
+.system-admin ul li ul.ch-menu {
+	position: absolute;
+	top:-9px;
+	left:250px;
+	z-index: 100;
+	margin-right:-310px;
+	padding:7px 7px 7px 20px;
 }
 
 /*  for altsys and protector

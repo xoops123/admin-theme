@@ -463,9 +463,9 @@ ul.modulenav a:hover span {
 
 .system-admin {
 	border: 1px solid #8a8a8a;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	background: <?php echo _ATC_COLUMN ?>;
 	background:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,93%,1);
   -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 7px rgba(0,0,0,0.3);
@@ -482,7 +482,6 @@ ul.modulenav a:hover span {
 	position: absolute;
 	pointer-events: none;
 }
-
 .system-admin:after {
 	position:absolute;
 	top:20px;
@@ -518,6 +517,32 @@ ul.modulenav a:hover span {
 .system-admin ul li {
 	background: url(../design/menulist.png) no-repeat 0 1px;
 }
+ul.ch-menu {
+	background: <?php echo _ATC_COLUMN ?>;
+	border: 1px solid #8a8a8a;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+  -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 10px rgba(0,0,0,0.3);
+     -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 10px rgba(0,0,0,0.3); /* ボックスシャドウ */
+          box-shadow: 0 3px 10px rgba(0,0,0,0.3),-3px -3px 10px rgba(0,0,0,0.3);
+}
+ul.ch-menu:after {
+	right: 100%;
+	top: 16px;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(208, 208, 208, 0);
+	border-right-color: <?php echo _ATC_COLUMN ?>;
+	border-right-color:hsla(<?php echo _COLOR_PHASE ?>,<?php echo _COLOR_PHASE2 ?>%,93%,1);
+	border-width: 5px;
+	margin-top: -5px;
+}
+
 
 /*  for altsys and protector
 ----------------------------------------------- */

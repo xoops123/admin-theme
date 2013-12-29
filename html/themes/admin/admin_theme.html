@@ -183,8 +183,6 @@ jQuery('input#headerSearch-keywords').blur(function(){
 });
 });
 </script>
-
-
 <script type="text/javascript">
 jQuery(function(){
 var flag = false;
@@ -202,8 +200,20 @@ $("#top-menu").bind("click",function(){
 	});	
 });
 </script>
-
-
+<script type="text/javascript">
+jQuery(function() {
+  $(".system-admin ul li ul").hide();
+  $(".system-admin ul li ul").addClass("ch-menu");
+  $(".system-admin ul li").hover(function() {
+    $(this).children('ul').show();
+  }, function() {
+    $(this).children('ul').hide();
+  });
+  $(".system-admin ul li").on("click", function() {
+    $(this).children('ul').slideToggle();
+  });
+});
+</script>
 </head>
 <body class="<{strip}>
 	<{if $xugj_trustdirname }>
@@ -282,7 +292,8 @@ $("#top-menu").bind("click",function(){
 <div class="system-admin">
 <h3><{$smarty.const._AD_THEME_SYSTEM_ADMIN}></h3>
 <div>
-<h4><{$smarty.const._AD_THEME_BASIC_SETTING}></h4>
+<ul><li>
+<{$smarty.const._AD_THEME_BASIC_SETTING}>
 <ul>
 <li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=1"><{$smarty.const._AD_THEME_GENARAL_SETTING}></a></li>
 <li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=6"><{$smarty.const._AD_THEME_MAIL_SETTING}></a></li>
@@ -293,9 +304,11 @@ $("#top-menu").bind("click",function(){
 <li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=PreferenceEdit&confcat_id=5"><{$smarty.const._AD_THEME_SEARCH_OPTION}></a></li>
 <li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ActSearch"><{$smarty.const._AD_THEME_ACTION_SEARCH}></a></li>
 </ul>
+</li></ul>
 </div>
 <div>
-<h4><{$smarty.const._AD_THEME_OP_ADMIN}></h4>
+<ul><li>
+<{$smarty.const._AD_THEME_OP_ADMIN}>
 <ul>
 <li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=ModuleList"><{$smarty.const._AD_THEME_MODULES_ADMIN}></a></li>
 <li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=InstallList"><{$smarty.const._AD_THEME_MODULES_INSTALL}></a></li>
@@ -310,9 +323,11 @@ $("#top-menu").bind("click",function(){
 <li><a href="<{$xoops_url}>/modules/legacy/admin/index.php?action=SmilesList"><{$smarty.const._AD_THEME_SMILY_ICON}></a></li>
 <li><a href="<{$xoops_url}>/modules/xupdate/admin/index.php?action=ModuleView">X-update</a></li>
 </ul>
+</li></ul>
 </div>
 <div>
-<h4><{$smarty.const._AD_THEME_USER_ADMIN}></h4>
+<ul><li>
+<{$smarty.const._AD_THEME_USER_ADMIN}>
 <ul>
 <li><a href="<{$xoops_url}>/modules/user/admin/index.php"><{$smarty.const._AD_THEME_USER_ADMIN}></a></li>
 <li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserSearch"><{$smarty.const._AD_THEME_USER_SEARCH}></a></li>
@@ -323,9 +338,11 @@ $("#top-menu").bind("click",function(){
 <li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserDataUpload"><{$smarty.const._AD_THEME_USER_SREG}></a></li>
 <li><a href="<{$xoops_url}>/modules/user/admin/index.php?action=UserDataDownload"><{$smarty.const._AD_THEME_USER_DATA_DOWNLOAD}></a></li>
 </ul>
+</li></ul>
 </div>
 <div>
-<h4><{$smarty.const._AD_THEME_SITE_ADMIN}></h4>
+<ul><li>
+<{$smarty.const._AD_THEME_SITE_ADMIN}>
 <ul>
 <li><a href="<{$xoops_url}>/admin.php"><{$smarty.const._AD_THEME_SITE_INFO}></a></li>
 <li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=TplsetList"><{$smarty.const._AD_THEME_TEMPLATE_ADMIN}></a></li>
@@ -336,6 +353,7 @@ $("#top-menu").bind("click",function(){
 <li><a href="<{$xoops_url}>/modules/legacyRender/admin/index.php?action=HtaccessView"><{$smarty.const._AD_THEME_HTACCESS_EXAMPLE}></a></li>
 <li><a href="<{$xoops_url}>/modules/protector/admin/index.php?page=advisory"><{$smarty.const._AD_THEME_SECURITY_GUIDE}></a></li>
 </ul>
+</li></ul>
 </div>
 </div>
 <{/capture}>
