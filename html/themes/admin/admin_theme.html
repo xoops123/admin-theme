@@ -9,6 +9,7 @@
 <meta http-equiv="content-language" content="<{$xoops_langcode}>" />
 <meta http-equiv="content-script-type" content="text/javascript" />
 <meta http-equiv="content-style-type" content="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <{if $smarty.server.HTTP_USER_AGENT|regex_replace:'/^.*MSIE\s*([0-9]+).*$/i':'\1' > 7}>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <{/if}>
@@ -195,7 +196,7 @@ $("#top-menu").bind("click",function(){
 		$("#center-column").css("margin-left","0");
 	} else{
 		$("#admincontent").css("margin-left","0");
-		$("#admincontent").css("margin-right","-260px");
+		$("#admincontent").css("margin-right","-250px");
 		$("#center-column").css("margin-left","-250px");
 		}flag = !flag;
 	});	
@@ -244,6 +245,7 @@ $("#top-menu").bind("click",function(){
 </div>
 
 <div id="top-menu">menu</div>
+<div id="go-home"><a href="<{$xoops_url}>/"><img src="<{"icons/home.png"|theme}>" alt="" /></a></div>
 </div>
 
 <div id="admincontent">

@@ -12,7 +12,8 @@
 		padding:0;
 		padding-bottom: 32768px; margin-bottom: -32768px;
 	}
-	#top-menu {
+	#top-menu ,
+	#go-home {
 		display: none;
 	}
 	#admincontent {
@@ -38,7 +39,8 @@
 		padding:0;
 		padding-bottom: 32768px; margin-bottom: -32768px;
 	}
-	#top-menu {
+	#top-menu ,
+	#go-home {
 		display: none;
 	}
 	#admincontent {
@@ -70,8 +72,17 @@
 		display: block;
 		position: absolute;
 		top:5px;
-		left: 10px;
+		left: 5px;
 		font-size:16px;
+	}
+	#go-home {
+		display: block;
+		position: absolute;
+		top:8px;
+		right:5px;
+	}
+	#go-home a {
+		padding:5px;
 	}
 	#admincontent {
 		margin-left:-240px;
@@ -82,6 +93,9 @@
 		margin:10px 0 0 0;
 		padding-left:240px;
 		padding-bottom: 32768px; margin-bottom: -32768px;
+	}
+	#left-column {
+		font-size:13px;
 	}
 	#header_h {
 		height:100%;

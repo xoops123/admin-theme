@@ -1,5 +1,5 @@
 【テーマ名　】 admin
-【バージョン】 0.10
+【バージョン】 0.11
 【作　成　者】 marine / mistgreen
 【動作　環境】 XOOPS Cube Legacy 2.2
 【ライセンス】 MIT
@@ -98,6 +98,9 @@ XCLの仕様として管理画面テンプレートのオーバーライド順�
 3. XOOPS_MODULE_PATH/[DIRNAME]/admin/templates
 4. XOOPS_MODULE_URL/legacy/admin/theme
 
+2013-12-25 ver0.11
+　スマートフォン用にviewportを設定
+　横幅740px以下での表示、左カラムのフォントサイズを少し大きく（13px）とした。右上にHomeアイコンを表示させた。
 
 ======================================================================
 ToDo
