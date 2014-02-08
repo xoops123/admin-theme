@@ -144,12 +144,35 @@ function ccOpenCid()
 // ]]> -->
 </script>
 <{$xoops_module_header}>
+<script type="text/javascript" src="<{$xoops_url}>/themes/admin/js/jquery.colors.bundle.min.js"></script>
 <script type="text/javascript">
 <!-- <![CDATA[
 if (typeof jQuery != 'undefined') {
 	jQuery(function($){
 		ccToggle(cid);
 		onloadEffect('left-column', 'minimizelc', 'lcimage');
+		
+		var bcChange = function() {
+			$('body').css({backgroundColor:"hsla("+H+","+S+"%,72%,1)"});
+			$('#footer').css({backgroundColor:"hsla("+H+","+S+"%,40%,1)"});
+			$('#header').css({backgroundColor:"hsla("+H+","+S+"%,72%,1)"});
+			$('#header_h').css({backgroundColor:"hsla("+H+","+S+"%,40%,1)"});
+			$('#admincontent').css({backgroundColor:"hsla("+H+","+S+"%,72%,1)"});
+			$('#left-column .head').css({borderTopColor:"hsla("+H+","+S+"%,84%,1)",
+										borderBottomColor:"hsla("+H+","+S+"%,84%,1)",
+										backgroundColor:"hsla("+H+","+S+"%,76%,1)"});
+			$('#left-column .head2').css({borderTopColor:"hsla("+H+","+S+"%,84%,1)",
+										borderBottomColor:"hsla("+H+","+S+"%,84%,1)",
+										backgroundColor:"hsla("+H+","+S+"%,93%,1)"});
+			$('#center-column').css({backgroundColor:"hsla("+H+","+S+"%,93%,1)"});
+		}
+		var setColor = function() {
+			$.post( "<{$xoops_url}>/themes/admin/colorset.php", {h:H,s:S} );
+		}
+		var H = $.colors($('body').css('background-color')).model('HSL').get('H');
+		var S = $.colors($('body').css('background-color')).model('HSL').get('S');
+		$( "#color_phase" ).slider({min:0,max:360,value:H,slide:function(e, ui){H=ui.value;bcChange();},change:function(e,ui){setColor();}});
+		$( "#color_phase2" ).slider({min:0,max:100,value:S,slide:function(e, ui){S=ui.value;bcChange();},change:function(e,ui){setColor();}});
 	});
 } else {
 	document.body.onload = function(){
@@ -400,7 +423,12 @@ jQuery(function($) {
 
 </div><{* /#admincontent *}>
 
-<div id="footer">Powered by&nbsp;<{$smarty.const.XOOPS_VERSION}> &copy; 2001-2012 <a href="https://github.com/xoopscube/legacy" rel="external">The XOOPS Cube Project<br />
+<div id="footer">
+<div>
+<div id="color_phase" style="margin:10px;display:inline-block;width:200px;"></div>
+<div id="color_phase2" style="margin:10px;display:inline-block;width:200px;"></div>
+</div>
+Powered by&nbsp;<{$smarty.const.XOOPS_VERSION}> &copy; 2001-2012 <a href="https://github.com/xoopscube/legacy" rel="external">The XOOPS Cube Project<br />
 </a>Help Us to Improve <a href="http://xoopscube.org/" rel="external">XOOPS Cube</a> - Report All Bugs to: <a href="https://github.com/xoopscube/legacy/issues"> Project Bug Tracker <img src="<{"icons/bug.png"|theme}>" alt="Bug report" /></a></div>
 
 </div><{/strip}>
