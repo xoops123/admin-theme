@@ -1,9 +1,24 @@
 <?php
+define('_LEGACY_PREVENT_LOAD_CORE_', true);
+include '../../../mainfile.php';
+
+$inifile = XOOPS_TRUST_PATH . '/uploads/' . urlencode(substr(XOOPS_URL, 7)) . '_admintheme_color.ini';
+if ($inifile) {
+	$ini = parse_ini_file($inifile);
+}
+is_array($ini) || ($ini = array());
+
+$def = array(
+	'color_phase' => 200,
+	'color_phase2' => 0
+);
+$ini = array_merge($def, $ini);
+
 header('Content-Type: text/css'); 
 
 //色相選択（color phase）
-define('_COLOR_PHASE','200'); //hslaによる色相（0-360）
-define('_COLOR_PHASE2','0'); //hslaによる彩度（0-360）
+define('_COLOR_PHASE',$ini['color_phase']); //hslaによる色相（0-360）
+define('_COLOR_PHASE2',$ini['color_phase2']); //hslaによる彩度（0-360）
 
 //基本設定
 define('_ATC_BG','#b7b7b7'); 									//基本背景色
