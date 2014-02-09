@@ -5,7 +5,7 @@
 Name="admin"
 Depends=Legacy_RenderSystem,legacy
 Url="http://xoops123.com/"
-Version="0.13"
+Version="0.15"
 
 [Theme]
 RenderSystem=Legacy_RenderSystem
