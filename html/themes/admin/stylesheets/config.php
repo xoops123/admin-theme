@@ -3,14 +3,15 @@ define('_LEGACY_PREVENT_LOAD_CORE_', true);
 include '../../../mainfile.php';
 
 $inifile = XOOPS_TRUST_PATH . '/uploads/' . urlencode(substr(XOOPS_URL, 7)) . '_admintheme_color.ini';
-if ($inifile) {
+$ini = array();
+if (is_file($inifile)) {
 	$ini = parse_ini_file($inifile);
 }
 is_array($ini) || ($ini = array());
 
 $def = array(
 	'color_phase' => 200,
-	'color_phase2' => 0
+	'color_phase2' => 10
 );
 $ini = array_merge($def, $ini);
 
