@@ -372,6 +372,19 @@ tr .even td {
 	padding:15px 0;	
 	text-align:center;
 	font-size:0.9em;
+	position: relative;
+}
+
+#footer .colorslider {
+	width: 200px;
+	position: absolute;
+	left: 15px;
+	bottom: 5px;
+}
+
+#footer .slider {
+	width: 100%;
+	margin: 10px;
 }
 
 .return_top {
@@ -381,7 +394,6 @@ tr .even td {
 	margin:20px;
 	padding:5px;
 }
-
 /* ====================================================== MenuNavi for noscript ===== */
 
 #menunavi {
