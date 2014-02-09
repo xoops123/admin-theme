@@ -15,8 +15,7 @@
 body {
 	font-size:12px;
 	line-height:130%;
-	font:12px/1.5em;
-	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif, 'Droid Serif',"Helvetica Neue", Helvetica,;
+	font:13px;
   -webkit-text-size-adjust: 100%;
 	-webkit-transition-property: font-size;
 	-moz-transition-property: font-size;
@@ -107,7 +106,6 @@ th input[type="checkbox"] {
 	margin-right:7px;
 	background:none;
 }
-/* ===== マウスカーソルを指の形に ===== */
 input[type="button"]:hover ,
 input[type="reset"]:hover ,
 input[type="submit"]:hover {

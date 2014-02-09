@@ -1,5 +1,5 @@
 【テーマ名　】 admin
-【バージョン】 0.14
+【バージョン】 0.15
 【作　成　者】 marine / mistgreen
 【動作　環境】 XOOPS Cube Legacy 2.2
 【ライセンス】 MIT
@@ -116,6 +116,10 @@ XCLの仕様として管理画面テンプレートのオーバーライド順�
 　Welcomeメッセージのエンティティ化により、EUC環境でも文字化けなく表示されるようになりました。　＞　thnx Mr. nao-pon
 
 2014-2-9 ver0.14
+　css微修正
+
+2014-2-9 ver0.15
+　config.php 修正
 　css微修正
 
 
