@@ -228,9 +228,13 @@ jQuery(function($) {
   $(".system-admin ul li ul").hide();
   $(".system-admin ul li ul").addClass("ch-menu");
   $(".system-admin ul li").hover(function() {
-    $(this).children('ul').show();
+    var self = $(this);
+    self.data('timer') && clearTimeout(self.data('timer'));
+    self.data('timer', setTimeout(function(){self.children('ul').show();}, 150));
   }, function() {
-    $(this).children('ul').hide();
+    var self = $(this);
+    self.data('timer') && clearTimeout(self.data('timer'));
+    self.data('timer', setTimeout(function(){self.children('ul').hide();}, 300));
   });
   $(".system-admin ul li").on("click", function() {
     $(this).children('ul').slideToggle();
