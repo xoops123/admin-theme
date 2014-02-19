@@ -10,7 +10,7 @@
 		min-height:100%;
 		margin:10px 0 0 -270px;
 		padding:0;
-		padding-bottom: 32768px; margin-bottom: -32768px;
+		/*padding-bottom: 32768px; margin-bottom: -32768px;*/
 	}
 	#top-menu ,
 	#go-home {
@@ -42,7 +42,7 @@
 	#center-column {
 		margin:10px 0 0 -250px;
 		padding:0;
-		padding-bottom: 32768px; margin-bottom: -32768px;
+		/*padding-bottom: 32768px; margin-bottom: -32768px;*/
 	}
 	#top-menu ,
 	#go-home {
@@ -102,7 +102,7 @@
 	#center-column {
 		margin:10px 0 0 0;
 		padding-left:240px;
-		padding-bottom: 32768px; margin-bottom: -32768px;
+		/*padding-bottom: 32768px; margin-bottom: -32768px;*/
 	}
 	#left-column {
 		font-size:13px;

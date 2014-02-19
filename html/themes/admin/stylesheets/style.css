@@ -358,7 +358,7 @@ tr .even td {
 	min-height:100%;
 	margin:10px 0 0 -270px;
 	padding:0;
-	padding-bottom: 32768px; margin-bottom: -32768px;
+	/*padding-bottom: 32768px; margin-bottom: -32768px;*/
 }
 #main {
 	position:relative;

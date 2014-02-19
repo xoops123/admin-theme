@@ -173,6 +173,11 @@ if (typeof jQuery != 'undefined') {
 		var S = $.colors($('body').css('background-color')).model('HSL').get('S');
 		$( "#color_phase" ).slider({min:0,max:360,value:H,slide:function(e, ui){H=ui.value;bcChange();},change:function(e,ui){setColor();}});
 		$( "#color_phase2" ).slider({min:0,max:100,value:S,slide:function(e, ui){S=ui.value;bcChange();},change:function(e,ui){setColor();}});
+		setTimeout(function(){
+			if ($('#center-column').height() < $('#left-column').height()) {
+				$('#center-column').height($('#left-column').height());
+			}
+		}, 10);
 	});
 } else {
 	document.body.onload = function(){
