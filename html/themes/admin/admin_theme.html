@@ -298,16 +298,63 @@ jQuery(function($) {
 		<{elseif $xoops_dirname == "legacyRender"}>
 		<{elseif $xoops_dirname == "user"}>
 		<{elseif $xoops_dirname == "profile"}>
-		<{elseif $xoops_dirname == "xupdate"}>
 		<{else}>
 			<div class="adminnavi">
 				<{$currentModule->mXoopsModule->getVar('name')}>
-				<span class="adminnaviTitle">
-					<{if $xugj_trustdirname }>&nbsp;&#040;&nbsp;<{$smarty.const._AD_LEGACY_LANG_MOD_NAME}>&nbsp;&#058;&nbsp;<{$xugj_trustdirname}>&nbsp;&#041;
-					<{elseif !$xoops_dirname == ""}>&nbsp;&#040;&nbsp;<{$smarty.const._AD_LEGACY_LANG_MOD_NAME}>&nbsp;&#058;&nbsp;<{$xoops_dirname}>&nbsp;&#041;
+				<span class="adminnaviTitle"><{strip}>
+					<{if $xugj_trustdirname }>
+						&nbsp;&#040;&nbsp;<{$smarty.const._AD_LEGACY_LANG_MOD_NAME}>&nbsp;&#058;&nbsp;<{$xugj_trustdirname}>&nbsp;&#041;
+					<{elseif !$xoops_dirname == ""}>
+						&nbsp;&#040;&nbsp;<{$smarty.const._AD_LEGACY_LANG_MOD_NAME}>&nbsp;&#058;&nbsp;<{$xoops_dirname}>&nbsp;&#041;
 					<{else}>
 					<{/if}>
-					</span>
+
+<{if $xugj_trustdirname }>
+	<{assign var="Modulelink" value=$xugj_trustdirname}>
+<{elseif !$xoops_dirname == ""}>
+	<{assign var="Modulelink" value=$xoops_dirname}>
+<{else}>
+<{/if}>
+<{if $Modulelink =="bulletin" }>
+			&nbsp;&nbsp;&raquo;&nbsp;
+				<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2FBulletin2" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "xupdate"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2FX-update" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "altsys"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2F<{$Modulelink}>" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "protector"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2F<{$Modulelink}>" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "d3downloads"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2F<{$Modulelink}>" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "d3forum"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2F<{$Modulelink}>" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "d3pipes"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2F<{$Modulelink}>" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "pico"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2F<{$Modulelink}>" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "piCal"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2F<{$Modulelink}>" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "cubeUtils"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2F<{$Modulelink}>" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "multiMenu"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?ModuleManuals%2Fmultimenu" target="_blank">Module Manual</a>
+<{elseif $Modulelink == "hypconf"}>
+	&nbsp;&nbsp;&raquo;&nbsp;
+		<a href="http://www.xugj.org/modules/xpwiki/?HypCommonFunc" target="_blank">Module Manual</a>
+<{else}>
+<{/if}>
+
+				</span><{/strip}>
 			</div>
 		<{/if}>
 		<{$xoops_contents}>
