@@ -12,7 +12,7 @@ RenderSystem=Legacy_RenderSystem
 Format="XCL html5 Style"
 Author=marine/mistgreen
 ScreenShot="screenshot.png"
-Description="Admin-Page Only"
+Description="for Admin-Page"
 W3C=YES
 
 Licence="MIT"
