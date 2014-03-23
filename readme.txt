@@ -1,5 +1,5 @@
 【テーマ名　】 admin
-【バージョン】 0.19
+【バージョン】 0.20
 【作　成　者】 marine / mistgreen
 【動作　環境】 XOOPS Cube Legacy 2.2
 【ライセンス】 MIT

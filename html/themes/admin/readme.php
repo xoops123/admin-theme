@@ -15,7 +15,7 @@ ini_set('mbstring.http_output' , 'pass');
 ini_set('mbstring.substitute_character', 'none');
 
 $name = preg_replace('#[^0-9a-zA-Z_-]#', '', @$_GET['name']);
-$text = @file_get_contents('../'.$_GET['name'].'/readme.txt');
+$text = @file_get_contents('../'.$name.'/readme.txt');
 if ($text) {
 	echo nl2br(htmlspecialchars(mb_convert_encoding($text, 'UTF-8', 'auto'), ENT_COMPAT, 'UTF-8'));
 } else {
