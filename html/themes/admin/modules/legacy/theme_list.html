@@ -54,8 +54,11 @@
           <{if $theme->get('url') != null}>
             <li><a href="<{$theme->getShow('url')}>"><{$smarty.const._AD_LEGACY_LANG_GET_THE_LATEST_VERSION}></a></li>
           <{/if}>
-            <li><a href="<{$smarty.const.XOOPS_THEME_URL}>/<{$theme->getShow('name')}>/readme.php" target="_blank"><{$theme->getShow('name')}> Readme.txt</a>
-            </li>
+<{assign var="name" value=$theme->getShow('name')}>
+<{if "`$smarty.const.XOOPS_THEME_PATH`/`$name`/readme.txt"|file_exists}>
+<li><a href="<{$smarty.const.XOOPS_THEME_URL}>/admin/readme.php?name=<{$name}>" target="_blank"><{$name}> Readme.txt</a>
+</li>
+<{/if}>          
         </ul>
       </td>
       <td class="legacy_list_select">
