@@ -254,4 +254,26 @@ if (isset($GLOBALS['mytrustdirname'])){
 }
 $this->assign( 'xugj_trustdirname' , $xugj_trustdirname) ;
 
+
+// UserAgent
+function isUserAgent($userAgent = null)
+{
+       if (is_null($userAgent)) {
+           $userAgent = $_SERVER['HTTP_USER_AGENT'];
+       }
+	$is_iphone=false;
+	$is_android=false;
+	$is_ipod=false;
+	$is_pc=false;
+	if(strpos($userAgent,"iPhone")){
+		$is_iphone=true;
+	} elseif(strpos($userAgent,"Android")){
+		$is_android=true;
+	} elseif(strpos($userAgent,"iPod")){
+		$is_ipod=true;
+	} else {
+		$is_pc=true;
+	}
+}
+
 ?>
