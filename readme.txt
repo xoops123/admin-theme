@@ -146,7 +146,7 @@ XCLの仕様として管理画面テンプレートのオーバーライド順�
 　	<$is_ipod>
 　	<$is_pc>
 
-2015-5-2
+2015-5-2 Ver0.22
 　各モジュールの一般設定画面で各モジュールの管理メニューを左カラム上部に表示
 　　Merge pull request #8 from nao-pon/nao-pon-patch-1
 
