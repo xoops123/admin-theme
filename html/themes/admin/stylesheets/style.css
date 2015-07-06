@@ -303,7 +303,7 @@ tr .even td {
 #header .topnav span.linkadmin a, span.linksite a { margin-right:10px;}
 
 #top-menu {
-	display: none;
+/*	display: none;  */
 	height:50px;
 	cursor: pointer;
 }
@@ -426,7 +426,7 @@ ul.submenunavi li {
 }
 #main h3 ,
 h3.admintitle {
-	display:none;
+/*	display:none; */
 }
 .adminnavi a:link , .adminnavi a:visited ,
 .adminnavi a:hover ,
