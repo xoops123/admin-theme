@@ -246,6 +246,18 @@ jQuery(function($) {
   });
 });
 </script>
+ <script type="text/javascript"> 
+   jQuery(function (){
+     $('#display_diff2default').change(c_sz);
+     $('#display_diff2file').change(c_sz);
+     function c_sz(){
+       $('#center-column').height("");
+       if ($('#center-column').height() < $('#left-column').height()){
+         $('#center-column').height($('#left-column').height());
+       }
+     }
+   });
+ </script>
 </head>
 <body class="<{strip}>
 	<{if $xugj_trustdirname }>
