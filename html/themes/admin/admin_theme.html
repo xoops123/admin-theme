@@ -19,245 +19,286 @@
 <link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/stylesheets/module.css" />
 <link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/stylesheets/colors.php" />
 <link rel="stylesheet" type="text/css" href="<{$xoops_url}>/themes/admin/stylesheets/media-queries.css" />
-<script type="text/javascript">
-<!-- <![CDATA[
-var cid = <{if $smarty.get.fct == "preferences" && $smarty.get.mod > 0}><{$smarty.get.mod}><{else}><{$currentModule->mXoopsModule->get('mid')}><{/if}>;
-function ccToggle(id)
-{
-	var el = xoopsGetElementById('c'+id).style;
-	if (el.display == 'block') {
-		el.display = 'none';
-		xoopsGetElementById('t'+id).className = 'head';
-		xoopsGetElementById('i'+id).src = '<{"design/max.png"|theme}>';
-	} else {
-		el.display = 'block';
-		xoopsGetElementById('t'+id).className = 'head2';
-		xoopsGetElementById('i'+id).src = '<{"design/min.png"|theme}>';
-	}
-}
-function ccOpenAll()
-{
-       var divs = document.getElementsByTagName('div');
-       for (var i=0;i<divs.length;i++) {
-	if (divs[i].className == 'head') {
-	var divid = divs[i].id; 
-	var divcid = divid.replace(/t/i, 'c');
-	var cidel = xoopsGetElementById(divcid); 
-	if ( cidel.className == 'submenu' ) {
-		cidel.style.display = 'block';
-		divs[i].className = 'head2';
-		var imgid = divid.replace(/t/i, 'i');
-		xoopsGetElementById(imgid).src = '<{"design/min.png"|theme}>';	
-	}
-	}
-	}
-}
-function ccCloseAll()
-{
-       var divs = document.getElementsByTagName('div');
-       for (var i=0;i<divs.length;i++) {
-	if (divs[i].className == 'head2') {
-	var divid = divs[i].id; 
-	var divcid = divid.replace(/t/i, 'c');
-	var cidel = xoopsGetElementById(divcid); 
-	if ( cidel.className == 'submenu' ) {
-		cidel.style.display = 'none';
-		divs[i].className = 'head';
-		var imgid = divid.replace(/t/i, 'i');
-		xoopsGetElementById(imgid).src = '<{"design/max.png"|theme}>';	
-	}
-	}
-	}
-}
-function ccOpenCid()
-{
-	ccCloseAll();
-	ccToggle(cid);
-}
-   var startwidth = '0px';
-
-       function setEffectCookie(name, value, expiredays)
-    {
-	var todayDate = new Date();
-	todayDate.setDate( todayDate.getDate() + expiredays );
-	document.cookie = name + "=" + escape( value ) + "; expires=" + todayDate.toGMTString() + "; path=/;"
-      }
-
-      function getEffectCookie(name)
-     {
-	var nameOfCookie = name + "=";
-	var x = 0;
-	while ( x <= document.cookie.length )
-	{
-		var y = (x+nameOfCookie.length);
-		if ( document.cookie.substring( x, y ) == nameOfCookie )
-		{
-			if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
-			endOfCookie = document.cookie.length;
-			return unescape( document.cookie.substring( y, endOfCookie ) );
-		}
-		x = document.cookie.indexOf( " ", x ) + 1;
-		if ( x == 0 )
-		break;
-	}
-	return "";
-      }
-
-   function toggleEffect(target, resizetarget, toggleimg) {
-    var targetstyle = xoopsGetElementById(target).style;
-    var elestyle = xoopsGetElementById(resizetarget).style;
-    var imgele = xoopsGetElementById(toggleimg);
-
-    if (elestyle.display == "block") {
-        elestyle.display = "none";
-          startwidth = targetstyle.width;
-        targetstyle.width = '20px';
-         imgele.src = '<{"design/menu_restore.png"|theme}>';
-         imgele.alt = 'Click me if you want to restore this left-column';
-         imgele.title = 'Click me if you want to restore this left-column';
-	setEffectCookie( 'effect', 'yes', 1 );
-	xoopsGetElementById('toggleall').style.display = "none";
-      }
-      else {
-        elestyle.display = "block";
-        targetstyle.width = startwidth;
-         imgele.src = '<{"design/menu_minimize.png"|theme}>';
-         imgele.alt = 'Click me if you want to minimize this left-column';
-         imgele.title = 'Click me if you want to minimize this left-column';
-	setEffectCookie( 'effect', 'no', 1 );
-	xoopsGetElementById('toggleall').style.display = "";
-      }
-   }
-
-   function onloadEffect(target, resizetarget, toggleimg) {
-	if ( getEffectCookie("effect") == "yes" ){
-        xoopsGetElementById(resizetarget).style.display = "none";
-          startwidth = xoopsGetElementById(target).style.width;
-        xoopsGetElementById(target).style.width = '20px';
-         xoopsGetElementById(toggleimg).src = '<{"design/menu_restore.png"|theme}>';
-         xoopsGetElementById(toggleimg).alt = 'Click me if you want to restore this left-column';
-         xoopsGetElementById(toggleimg).title = 'Click me if you want to restore this left-column';
-	xoopsGetElementById('toggleall').style.display = "none";
-      }
-     }	
-
-// ]]> -->
-</script>
 <{$xoops_module_header}>
 <script type="text/javascript" src="<{$xoops_url}>/themes/admin/js/jquery.colors.bundle.min.js"></script>
 <script type="text/javascript">
 <!-- <![CDATA[
-if (typeof jQuery != 'undefined') {
-	jQuery(function($){
-		ccToggle(cid);
-		onloadEffect('left-column', 'minimizelc', 'lcimage');
-		
-		var bcChange = function() {
-			$('body').css({backgroundColor:"hsla("+H+","+S+"%,72%,1)"});
-			$('#footer').css({backgroundColor:"hsla("+H+","+S+"%,40%,1)"});
-			$('#header').css({backgroundColor:"hsla("+H+","+S+"%,72%,1)"});
-			$('#header_h').css({backgroundColor:"hsla("+H+","+S+"%,40%,1)"});
-			$('#admincontent').css({backgroundColor:"hsla("+H+","+S+"%,72%,1)"});
-			$('#left-column .head').css({borderTopColor:"hsla("+H+","+S+"%,84%,1)",
-										borderBottomColor:"hsla("+H+","+S+"%,84%,1)",
-										backgroundColor:"hsla("+H+","+S+"%,76%,1)"});
-			$('#left-column .head2').css({borderTopColor:"hsla("+H+","+S+"%,84%,1)",
-										borderBottomColor:"hsla("+H+","+S+"%,84%,1)",
-										backgroundColor:"hsla("+H+","+S+"%,93%,1)"});
-			$('#center-column').css({backgroundColor:"hsla("+H+","+S+"%,93%,1)"});
+(function() {
+	var cid = <{if $smarty.get.fct == "preferences" && $smarty.get.mod > 0}><{$smarty.get.mod}><{else}><{$currentModule->mXoopsModule->get('mid')}><{/if}>;
+	var startwidth = '0px';
+
+	function ccToggle(id) {
+		var el = xoopsGetElementById('c' + id).style;
+		if (el.display == 'block') {
+			el.display = 'none';
+			xoopsGetElementById('t' + id).className = 'head';
+			xoopsGetElementById('i' + id).src = '<{"design/max.png"|theme}>';
+		} else {
+			el.display = 'block';
+			xoopsGetElementById('t' + id).className = 'head2';
+			xoopsGetElementById('i' + id).src = '<{"design/min.png"|theme}>';
 		}
-		var setColor = function() {
-			$.post( "<{$xoops_url}>/themes/admin/colorset.php", {h:H,s:S} );
-		}
-		var H = $.colors($('body').css('background-color')).model('HSL').get('H');
-		var S = $.colors($('body').css('background-color')).model('HSL').get('S');
-		$( "#color_phase" ).slider({min:0,max:360,value:H,slide:function(e, ui){H=ui.value;bcChange();},change:function(e,ui){setColor();}});
-		$( "#color_phase2" ).slider({min:0,max:100,value:S,slide:function(e, ui){S=ui.value;bcChange();},change:function(e,ui){setColor();}});
-		setTimeout(function(){
-			if ($('#center-column').height() < $('#left-column').height()) {
-				$('#center-column').height($('#left-column').height());
-			}
-		}, 10);
-	});
-} else {
-	document.body.onload = function(){
-		ccToggle(cid);
-		onloadEffect('left-column', 'minimizelc', 'lcimage');
 	}
-}
+
+	function ccOpenAll() {
+		var divs = document.getElementsByTagName('div');
+		for (var i = 0; i < divs.length; i++) {
+			if (divs[i].className == 'head') {
+				var divid = divs[i].id;
+				var divcid = divid.replace(/t/i, 'c');
+				var cidel = xoopsGetElementById(divcid);
+				if (cidel.className == 'submenu') {
+					cidel.style.display = 'block';
+					divs[i].className = 'head2';
+					var imgid = divid.replace(/t/i, 'i');
+					xoopsGetElementById(imgid).src = '<{"design/min.png"|theme}>';
+				}
+			}
+		}
+	}
+
+	function ccCloseAll() {
+		var divs = document.getElementsByTagName('div');
+		for (var i = 0; i < divs.length; i++) {
+			if (divs[i].className == 'head2') {
+				var divid = divs[i].id;
+				var divcid = divid.replace(/t/i, 'c');
+				var cidel = xoopsGetElementById(divcid);
+				if (cidel.className == 'submenu') {
+					cidel.style.display = 'none';
+					divs[i].className = 'head';
+					var imgid = divid.replace(/t/i, 'i');
+					xoopsGetElementById(imgid).src = '<{"design/max.png"|theme}>';
+				}
+			}
+		}
+	}
+
+	function ccOpenCid() {
+		ccCloseAll();
+		ccToggle(cid);
+	}
+
+	function setEffectCookie(name, value, expiredays) {
+		var todayDate = new Date();
+		todayDate.setDate(todayDate.getDate() + expiredays);
+		document.cookie = name + "=" + escape(value) + "; expires=" + todayDate.toGMTString() + "; path=/;"
+	}
+
+	function getEffectCookie(name) {
+		var nameOfCookie = name + "=";
+		var x = 0;
+		while (x <= document.cookie.length) {
+			var y = (x + nameOfCookie.length);
+			if (document.cookie.substring(x, y) == nameOfCookie) {
+				if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+					endOfCookie = document.cookie.length;
+				return unescape(document.cookie.substring(y, endOfCookie));
+			}
+			x = document.cookie.indexOf(" ", x) + 1;
+			if (x == 0)
+				break;
+		}
+		return "";
+	}
+
+	function toggleEffect(target, resizetarget, toggleimg) {
+		var targetstyle = xoopsGetElementById(target).style;
+		var elestyle = xoopsGetElementById(resizetarget).style;
+		var imgele = xoopsGetElementById(toggleimg);
+
+		if (elestyle.display == "block") {
+			elestyle.display = "none";
+			startwidth = targetstyle.width;
+			targetstyle.width = '20px';
+			imgele.src = '<{"design/menu_restore.png"|theme}>';
+			imgele.alt = 'Click me if you want to restore this left-column';
+			imgele.title = 'Click me if you want to restore this left-column';
+			setEffectCookie('effect', 'yes', 1);
+			xoopsGetElementById('toggleall').style.display = "none";
+		} else {
+			elestyle.display = "block";
+			targetstyle.width = startwidth;
+			imgele.src = '<{"design/menu_minimize.png"|theme}>';
+			imgele.alt = 'Click me if you want to minimize this left-column';
+			imgele.title = 'Click me if you want to minimize this left-column';
+			setEffectCookie('effect', 'no', 1);
+			xoopsGetElementById('toggleall').style.display = "";
+		}
+	}
+
+	function onloadEffect(target, resizetarget, toggleimg) {
+		if (getEffectCookie("effect") == "yes") {
+			xoopsGetElementById(resizetarget).style.display = "none";
+			startwidth = xoopsGetElementById(target).style.width;
+			xoopsGetElementById(target).style.width = '20px';
+			xoopsGetElementById(toggleimg).src = '<{"design/menu_restore.png"|theme}>';
+			xoopsGetElementById(toggleimg).alt = 'Click me if you want to restore this left-column';
+			xoopsGetElementById(toggleimg).title = 'Click me if you want to restore this left-column';
+			xoopsGetElementById('toggleall').style.display = "none";
+		}
+	}
+
+	if (typeof jQuery != 'undefined') {
+		jQuery(function($) {
+			ccToggle(cid);
+			onloadEffect('left-column', 'minimizelc', 'lcimage');
+
+			var bcChange = function() {
+				$('body').css({
+					backgroundColor: "hsla(" + H + "," + S + "%,72%,1)"
+				});
+				$('#footer').css({
+					backgroundColor: "hsla(" + H + "," + S + "%,40%,1)"
+				});
+				$('#header').css({
+					backgroundColor: "hsla(" + H + "," + S + "%,72%,1)"
+				});
+				$('#header_h').css({
+					backgroundColor: "hsla(" + H + "," + S + "%,40%,1)"
+				});
+				$('#admincontent').css({
+					backgroundColor: "hsla(" + H + "," + S + "%,72%,1)"
+				});
+				$('#left-column .head').css({
+					borderTopColor: "hsla(" + H + "," + S + "%,84%,1)",
+					borderBottomColor: "hsla(" + H + "," + S + "%,84%,1)",
+					backgroundColor: "hsla(" + H + "," + S + "%,76%,1)"
+				});
+				$('#left-column .head2').css({
+					borderTopColor: "hsla(" + H + "," + S + "%,84%,1)",
+					borderBottomColor: "hsla(" + H + "," + S + "%,84%,1)",
+					backgroundColor: "hsla(" + H + "," + S + "%,93%,1)"
+				});
+				$('#center-column').css({
+					backgroundColor: "hsla(" + H + "," + S + "%,93%,1)"
+				});
+			}
+			var setColor = function() {
+				$.post("<{$xoops_url}>/themes/admin/colorset.php", {
+					h: H,
+					s: S
+				});
+			}
+			var H = $.colors($('body').css('background-color')).model('HSL').get('H');
+			var S = $.colors($('body').css('background-color')).model('HSL').get('S');
+			$("#color_phase").slider({
+				min: 0,
+				max: 360,
+				value: H,
+				slide: function(e, ui) {
+					H = ui.value;
+					bcChange();
+				},
+				change: function(e, ui) {
+					setColor();
+				}
+			});
+			$("#color_phase2").slider({
+				min: 0,
+				max: 100,
+				value: S,
+				slide: function(e, ui) {
+					S = ui.value;
+					bcChange();
+				},
+				change: function(e, ui) {
+					setColor();
+				}
+			});
+			setTimeout(function() {
+				if ($('#center-column').height() < $('#left-column').height()) {
+					$('#center-column').height($('#left-column').height());
+				}
+			}, 10);
+
+			(function() {
+				var GuideSentence = '<{$smarty.const._AD_THEME_ACTION_SEARCH}>';
+				var long = '240px';
+				var short = '120px';
+				var node = $('input#headerSearch-keywords');
+				node.on('focus blur', function(e) {
+					if (node.val() === GuideSentence) {
+						node.val('');
+					}
+					node.animate({
+							width: long
+						}, 200)
+						.css({
+							"background": "#fff",
+							"color": "#000"
+						});
+				}).on('blur', function() {
+					if (node.val() === '') {
+						node.val(GuideSentence);
+					}
+					node.animate({
+							width: short
+						}, 500)
+						.css({
+							"background": "#f5f5f5",
+							"color": "#b7b7b7"
+						});
+				});
+			})();
+
+			(function() {
+				var flag = false;
+				$("#top-menu").on("click", function() {
+					if (flag) {
+						$("#admincontent").css("margin-left", "-240px");
+						$("#admincontent").css("padding-left", "240px");
+						$("#admincontent").css("margin-right", "0");
+						$("#center-column").css("margin-left", "0");
+					} else {
+						$("#admincontent").css("margin-left", "0");
+						$("#admincontent").css("margin-right", "-250px");
+						$("#center-column").css("margin-left", "-250px");
+					}
+					flag = !flag;
+				});
+			})();
+
+			$(".system-admin ul li ul").hide();
+			$(".system-admin ul li ul").addClass("ch-menu");
+			$(".system-admin ul li").hover(function() {
+				var self = $(this);
+				self.data('timer') && clearTimeout(self.data('timer'));
+				self.data('timer', setTimeout(function() {
+					self.children('ul').show();
+				}, 150));
+			}, function() {
+				var self = $(this);
+				self.data('timer') && clearTimeout(self.data('timer'));
+				self.data('timer', setTimeout(function() {
+					self.children('ul').hide();
+				}, 300));
+			});
+			$(".system-admin ul li").on("click", function() {
+				$(this).children('ul').slideToggle();
+			});
+
+			$('#display_diff2default').change(c_sz);
+			$('#display_diff2file').change(c_sz);
+
+			function c_sz() {
+				$('#center-column').height("");
+				if ($('#center-column').height() < $('#left-column').height()) {
+					$('#center-column').height($('#left-column').height());
+				}
+			}
+
+		});
+
+	} else {
+		document.body.onload = function() {
+			ccToggle(cid);
+			onloadEffect('left-column', 'minimizelc', 'lcimage');
+		}
+	}
+})();
 // ]]> -->
 </script>
-<script type="text/javascript">
-jQuery(function() {
-var headerSearch = jQuery('.headerSearch');
-var GuideSentence = '<{$smarty.const._AD_THEME_ACTION_SEARCH}>';
-var long = '240px';
-var short = '120px';
-jQuery('input#headerSearch-keywords').focus(function(){
-    if(jQuery(this).val()===GuideSentence){
-        jQuery(this).val('');
-    }
-    jQuery(this).animate({width: long},200);
-	jQuery(this).css("background","#fff");
-	jQuery(this).css("color","#000");
-});
-jQuery('input#headerSearch-keywords').blur(function(){
-    if(jQuery(this).val()===''){
-        jQuery(this).val(GuideSentence);
-    }
-    jQuery(this).animate({width: short},500);
-	jQuery(this).css("background","#f5f5f5");
-	jQuery(this).css("color","#b7b7b7");
-});
-});
-</script>
-<script type="text/javascript">
-jQuery(function($){
-var flag = false;
-$("#top-menu").bind("click",function(){
-	if(flag){
-		$("#admincontent").css("margin-left","-240px");
-		$("#admincontent").css("padding-left","240px");
-		$("#admincontent").css("margin-right","0");
-		$("#center-column").css("margin-left","0");
-	} else{
-		$("#admincontent").css("margin-left","0");
-		$("#admincontent").css("margin-right","-250px");
-		$("#center-column").css("margin-left","-250px");
-		}flag = !flag;
-	});	
-});
-</script>
-<script type="text/javascript">
-jQuery(function($) {
-  $(".system-admin ul li ul").hide();
-  $(".system-admin ul li ul").addClass("ch-menu");
-  $(".system-admin ul li").hover(function() {
-    var self = $(this);
-    self.data('timer') && clearTimeout(self.data('timer'));
-    self.data('timer', setTimeout(function(){self.children('ul').show();}, 150));
-  }, function() {
-    var self = $(this);
-    self.data('timer') && clearTimeout(self.data('timer'));
-    self.data('timer', setTimeout(function(){self.children('ul').hide();}, 300));
-  });
-  $(".system-admin ul li").on("click", function() {
-    $(this).children('ul').slideToggle();
-  });
-});
-</script>
- <script type="text/javascript"> 
-   jQuery(function (){
-     $('#display_diff2default').change(c_sz);
-     $('#display_diff2file').change(c_sz);
-     function c_sz(){
-       $('#center-column').height("");
-       if ($('#center-column').height() < $('#left-column').height()){
-         $('#center-column').height($('#left-column').height());
-       }
-     }
-   });
- </script>
 </head>
 <body class="<{strip}>
 	<{if $xugj_trustdirname }>
